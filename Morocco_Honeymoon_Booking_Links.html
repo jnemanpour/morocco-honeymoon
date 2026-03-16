@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay & Raye — Morocco Honeymoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #C4654A;
+    --terracotta-dark: #A8533C;
+    --rose: #D4847A;
+    --rose-light: #EBBFB8;
+    --rose-pale: #FDF5F3;
+    --gold: #C49A3C;
+    --gold-rich: #B8860B;
+    --gold-light: #E4C87A;
+    --gold-pale: #FBF6EC;
+    --cream: #FDF8F0;
+    --warm-white: #FFFCF7;
+    --sand: #F0E6D6;
+    --sand-dark: #D4C4AA;
+    --text-dark: #2C1810;
+    --text-medium: #5C3D2E;
+    --text-light: #8B7260;
+    --teal: #1A6B5A;
+    --teal-light: #E6F2EF;
+    --deep-blue: #1B3455;
+    --plum: #6B3A5C;
+    --plum-light: #F2E8EE;
+    --midnight: #1C1014;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+    background: var(--cream);
+    position: relative;
+  }
+
+  /* ── Moroccan Tile Background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='1'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z'/%3E%3Cpath d='M40 10 L70 40 L40 70 L10 40Z'/%3E%3Cpath d='M40 20 L60 40 L40 60 L20 40Z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  /* ── Moroccan Ornament SVG helper ── */
+  .ornament {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2em;
+    letter-spacing: 6px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── Hero Section ── */
+  .hero {
+    position: relative;
+    background: linear-gradient(170deg, #1C1014 0%, #2C1810 30%, #4A2030 60%, #1B3455 100%);
+    color: white;
+    padding: 0;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(28,16,20,0.25);
+  }
+  .hero-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E4C87A' stroke-width='0.8'%3E%3Cpath d='M60 0v120M0 60h120'/%3E%3Ccircle cx='60' cy='60' r='55'/%3E%3Ccircle cx='60' cy='60' r='40'/%3E%3Ccircle cx='60' cy='60' r='25'/%3E%3Ccircle cx='60' cy='60' r='10'/%3E%3Cpath d='M60 5 L60 5 Q85 30 115 60 Q85 90 60 115 Q35 90 5 60 Q35 30 60 5Z'/%3E%3Cpath d='M30 0 L90 60 L30 120'/%3E%3Cpath d='M90 0 L30 60 L90 120'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 25% 20%, rgba(196,101,74,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 80%, rgba(196,154,60,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(212,132,122,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  /* Moroccan arch frame */
+  .arch-frame {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 30px 36px;
+    position: relative;
+  }
+  .arch-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 320px; height: 200px;
+    border: 2px solid rgba(228,200,122,0.25);
+    border-bottom: none;
+    border-radius: 160px 160px 0 0;
+    pointer-events: none;
+  }
+  .arch-frame::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 296px; height: 188px;
+    border: 1px solid rgba(228,200,122,0.12);
+    border-bottom: none;
+    border-radius: 148px 148px 0 0;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9em;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2em;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .hero h1 em {
+    display: block;
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 0.85em;
+  }
+  .hero-sub {
+    font-family: 'Amiri', serif;
+    font-size: 1.15em;
+    color: var(--rose-light);
+    font-style: italic;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+  }
+  .hero-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    font-weight: 400;
+    font-style: italic;
+    color: white;
+    margin-top: 30px;
+  }
+  .hero-names .ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4em;
+    color: var(--rose);
+    vertical-align: -3px;
+    margin: 0 8px;
+  }
+  .hero-ornament {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gold-light);
+    opacity: 0.6;
+  }
+  .hero-ornament .line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  /* ── Moroccan Section Divider ── */
+  .moroccan-divider {
+    text-align: center;
+    margin: 8px 0 36px;
+    position: relative;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .moroccan-divider::before,
+  .moroccan-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+  .moroccan-divider svg {
+    flex-shrink: 0;
+    margin: 0 12px;
+  }
+
+  /* ── Section Cards ── */
+  .section {
+    background: var(--warm-white);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 16px;
+    box-shadow:
+      0 1px 3px rgba(44,24,16,0.04),
+      0 4px 24px rgba(44,24,16,0.06);
+    border: 1px solid rgba(196,154,60,0.1);
+    position: relative;
+  }
+  /* Subtle corner ornaments */
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px;
+    width: 30px; height: 30px;
+    border-top: 2px solid var(--gold-light);
+    border-left: 2px solid var(--gold-light);
+    border-radius: 4px 0 0 0;
+    opacity: 0.3;
+  }
+  .section::after {
+    content: '';
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 30px; height: 30px;
+    border-top: 2px solid var(--gold-light);
+    border-right: 2px solid var(--gold-light);
+    border-radius: 0 4px 0 0;
+    opacity: 0.3;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+    font-size: 1.65em;
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding-bottom: 16px;
+    text-align: center;
+    position: relative;
+  }
+  .section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+    margin: 14px auto 0;
+    border-radius: 2px;
+  }
+
+  .section h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--terracotta);
+    font-size: 1.12em;
+    font-weight: 600;
+    margin: 28px 0 14px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section h3::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text-light);
+    font-size: 1.1em;
+    margin-bottom: 24px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ── Booking Cards ── */
+  .booking-card {
+    background: linear-gradient(135deg, var(--gold-pale), var(--warm-white));
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin: 16px 0;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(196,154,60,0.12);
+  }
+  .booking-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    border-radius: 14px 0 0 14px;
+    background: linear-gradient(180deg, var(--gold), var(--gold-rich));
+  }
+  .booking-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(44,24,16,0.1);
+  }
+
+  .booking-card.flight {
+    background: linear-gradient(135deg, var(--plum-light), #F8F0F5);
+    border-color: rgba(107,58,92,0.1);
+  }
+  .booking-card.flight::before {
+    background: linear-gradient(180deg, var(--plum), var(--deep-blue));
+  }
+
+  .booking-card.activity {
+    background: linear-gradient(135deg, var(--teal-light), #F0F8F5);
+    border-color: rgba(26,107,90,0.1);
+  }
+  .booking-card.activity::before {
+    background: linear-gradient(180deg, var(--teal), #2A8B6A);
+  }
+
+  /* Card interior pattern */
+  .booking-card::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,154,60,0.06);
+    pointer-events: none;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.08em;
+    color: var(--text-dark);
+  }
+  .card-price {
+    background: linear-gradient(135deg, var(--gold), var(--gold-rich));
+    color: white;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-family: 'Lora', serif;
+    font-size: 0.83em;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(184,134,11,0.2);
+  }
+  .card-price.flight-price {
+    background: linear-gradient(135deg, var(--plum), var(--deep-blue));
+    box-shadow: 0 2px 8px rgba(107,58,92,0.2);
+  }
+  .card-price.activity-price {
+    background: linear-gradient(135deg, var(--teal), #2A8B6A);
+    box-shadow: 0 2px 8px rgba(26,107,90,0.2);
+  }
+
+  .card-details {
+    margin-top: 10px;
+    color: var(--text-medium);
+    font-size: 0.92em;
+    position: relative;
+  }
+  .card-details span { display: block; margin: 5px 0; padding-left: 8px; }
+
+  /* ── Buttons ── */
+  .book-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 0.88em;
+    transition: all 0.25s ease;
+    letter-spacing: 0.3px;
+    position: relative;
+  }
+  .book-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .book-btn.primary {
+    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+    color: white;
+  }
+  .book-btn.secondary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-rich));
+    color: white;
+    margin-left: 8px;
+  }
+  .book-btn.green {
+    background: linear-gradient(135deg, var(--teal), #1A7B6A);
+    color: white;
+  }
+
+  /* ── Tips ── */
+  .tip {
+    background: linear-gradient(135deg, var(--sand), var(--cream));
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-size: 0.93em;
+    color: var(--text-medium);
+    border: 1px solid rgba(196,154,60,0.12);
+    position: relative;
+    padding-left: 30px;
+  }
+  .tip::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    border-radius: 14px 0 0 14px;
+  }
+  .tip strong { color: var(--terracotta); font-family: 'Playfair Display', serif; }
+
+  /* ── Night Labels ── */
+  .night-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--terracotta), var(--rose));
+    color: white;
+    font-family: 'Lora', serif;
+    font-size: 0.58em;
+    font-style: normal;
+    padding: 3px 12px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(196,101,74,0.2);
+  }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(196,154,60,0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.95em;
+    transition: background 0.15s;
+  }
+  .checklist li:hover { background: rgba(196,154,60,0.03); border-radius: 8px; margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox {
+    width: 24px; height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    background: var(--warm-white);
+    border-radius: 50%;
+    border: 2px solid var(--rose);
+    box-shadow: inset 0 1px 4px rgba(212,132,122,0.15);
+  }
+
+  /* ── Total Bar ── */
+  .total-bar {
+    position: relative;
+    background: linear-gradient(170deg, #1C1014 0%, #2C1810 30%, #4A2030 60%, #1B3455 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-top: 16px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(28,16,20,0.25);
+  }
+  .total-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(196,101,74,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(196,154,60,0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .total-bar h2 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 1.55em;
+    position: relative;
+    text-align: center;
+  }
+  .total-bar h2::after { display: none; }
+  .total-bar p {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold-light);
+    font-size: 1.2em;
+    font-style: italic;
+    position: relative;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 44px 20px 36px;
+    color: var(--text-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3em;
+    font-style: italic;
+  }
+  .footer-ornament {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--gold);
+    opacity: 0.4;
+    letter-spacing: 8px;
+    font-size: 0.8em;
+  }
+
+  /* ── Pros/Cons ── */
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+    font-size: 0.88em;
+    position: relative;
+  }
+  .pros, .cons {
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+  .pros {
+    background: rgba(26,107,90,0.06);
+    border: 1px solid rgba(26,107,90,0.12);
+  }
+  .cons {
+    background: rgba(196,101,74,0.06);
+    border: 1px solid rgba(196,101,74,0.12);
+  }
+  .pros-label, .cons-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .pros-label { color: var(--teal); }
+  .cons-label { color: var(--terracotta); }
+  .pros ul, .cons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pros li, .cons li {
+    padding: 2px 0;
+    color: var(--text-medium);
+    line-height: 1.5;
+  }
+  .pros li::before { content: '+ '; color: var(--teal); font-weight: 700; }
+  .cons li::before { content: '- '; color: var(--terracotta); font-weight: 700; }
+
+  .pick-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--terracotta));
+    color: white;
+    font-family: 'Lora', serif;
+    font-size: 0.7em;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.2em; }
+    .hero-content { padding: 40px 24px; }
+    .arch-frame { padding: 20px 10px 20px; }
+    .arch-frame::before, .arch-frame::after { display: none; }
+    .section { padding: 28px 20px; }
+    .card-header { flex-direction: column; align-items: flex-start; }
+    .book-btn { margin-left: 0 !important; }
+    .pros-cons { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="arch-frame">
+      <div class="hero-eyebrow">Our Honeymoon Adventure</div>
+      <h1>15 Days in<em>Morocco</em></h1>
+      <div class="hero-sub">Riads, Sahara Stars, Blue Streets & Ocean Breezes</div>
+      <div class="hero-names">Jay <span class="ampersand">&</span> Raye</div>
+      <div class="hero-ornament">
+        <span class="line"></span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0L12.5 7.5L20 10L12.5 12.5L10 20L7.5 12.5L0 10L7.5 7.5L10 0Z" fill="currentColor" opacity="0.6"/></svg>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INTERACTIVE MAP ═══ -->
+<div class="section" style="padding: 36px 36px 28px;">
+  <h2>Our Route Through Morocco</h2>
+  <p class="section-subtitle">Click any stop to see what awaits us there.</p>
+  <div id="map" style="width:100%; height:440px; border-radius:14px; overflow:hidden; box-shadow: 0 4px 20px rgba(44,24,16,0.12); border: 2px solid rgba(196,154,60,0.2);"></div>
+  <div id="map-info" style="margin-top:16px; min-height:60px;"></div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  .stop-popup { font-family: 'Lora', serif; text-align: center; min-width: 180px; }
+  .stop-popup h4 { font-family: 'Playfair Display', serif; color: #2C1810; font-size: 1.1em; margin: 0 0 4px; }
+  .stop-popup .stop-days { color: #C4654A; font-size: 0.85em; font-weight: 600; margin-bottom: 6px; }
+  .stop-popup .stop-desc { color: #5C3D2E; font-size: 0.88em; line-height: 1.5; }
+  .stop-popup .stop-highlights { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .stop-popup .highlight-tag {
+    background: linear-gradient(135deg, #FBF6EC, #F0E6D6);
+    border: 1px solid rgba(196,154,60,0.2);
+    color: #5C3D2E;
+    font-size: 0.78em;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  #map-info {
+    background: linear-gradient(135deg, var(--gold-pale), var(--warm-white));
+    border-radius: 12px;
+    padding: 18px 22px;
+    border: 1px solid rgba(196,154,60,0.12);
+    font-size: 0.93em;
+    color: var(--text-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  #map-info .info-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15em;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  #map-info .info-detail { font-family: 'Lora', serif; line-height: 1.6; }
+  .leaflet-popup-content-wrapper { border-radius: 12px !important; box-shadow: 0 4px 20px rgba(44,24,16,0.15) !important; }
+  .leaflet-popup-tip { box-shadow: none !important; }
+
+  /* Custom numbered markers */
+  .stop-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    border: 3px solid white;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .stop-marker:hover { transform: scale(1.2); }
+  .stop-marker.active { transform: scale(1.25); box-shadow: 0 4px 16px rgba(0,0,0,0.35); }
+</style>
+
+<script>
+(function() {
+  const stops = [
+    {
+      name: 'Marrakech', lat: 31.6295, lng: -7.9811, num: 1,
+      color: '#C4654A', days: 'Days 1–3',
+      desc: 'The Red City — our adventure begins here',
+      highlights: ['Medina & Souks', 'Hammam for Two', 'Cooking Class', 'Jardin Majorelle'],
+      detail: 'Three nights exploring the vibrant medina, enjoying a couples hammam, learning to cook tagine together, and watching sunset over Jemaa el-Fnaa square.'
+    },
+    {
+      name: 'Aït Benhaddou', lat: 31.0472, lng: -7.1299, num: '•',
+      color: '#B8860B', days: 'Day 4 (stop)',
+      desc: 'UNESCO kasbah — Game of Thrones filming location',
+      highlights: ['UNESCO Site', 'Photo Stop', 'Atlas Mountains'],
+      detail: 'A breathtaking stop on our desert road trip. This ancient fortified village has been a backdrop for dozens of Hollywood films.'
+    },
+    {
+      name: 'Dades Valley', lat: 31.4764, lng: -5.9764, num: '•',
+      color: '#B8860B', days: 'Night 4',
+      desc: 'Dramatic gorge carved through rose-red rock',
+      highlights: ['Gorge Views', 'Kasbah Stay', 'Road of 1000 Kasbahs'],
+      detail: 'An overnight in a traditional kasbah guesthouse nestled in the dramatic Dades Gorge. Stunning canyon views as we make our way to the Sahara.'
+    },
+    {
+      name: 'Sahara Desert (Merzouga)', lat: 31.0801, lng: -4.0083, num: 2,
+      color: '#C49A3C', days: 'Night 5',
+      desc: 'Camel trek, stargazing, sunrise over the dunes',
+      highlights: ['Camel Trek', 'Luxury Camp', 'Stargazing', 'Sunrise'],
+      detail: 'The most romantic night of our trip. We ride camels into the golden Erg Chebbi dunes at sunset, sleep in a luxury tent under a blanket of stars, and wake for sunrise over the Sahara.'
+    },
+    {
+      name: 'Fes', lat: 34.0181, lng: -5.0078, num: 3,
+      color: '#6B3A5C', days: 'Days 6–9',
+      desc: 'The world\'s largest medieval city',
+      highlights: ['9000 Alleyways', 'Tanneries', 'Cooking Class', 'Merenid Sunset'],
+      detail: 'Four nights in a 17th-century palace riad. We explore the labyrinthine medina with a guide, take a Fassi cooking class, visit the famous tanneries, and watch sunset from the Merenid Tombs.'
+    },
+    {
+      name: 'Chefchaouen', lat: 35.1688, lng: -5.2636, num: 4,
+      color: '#1A6B5A', days: 'Days 10–11',
+      desc: 'The Blue Pearl of the Rif Mountains',
+      highlights: ['Blue Streets', 'Mountain Hike', 'Spanish Mosque', 'Mountain Cheese'],
+      detail: 'Two nights in the dreamlike blue city. We hike to the Spanish Mosque for panoramic views, wander blue-washed streets, and enjoy the slowest, most peaceful pace of the whole trip.'
+    },
+    {
+      name: 'Essaouira', lat: 31.5085, lng: -9.7595, num: 5,
+      color: '#1B3455', days: 'Days 12–14',
+      desc: 'Atlantic coast — wind, waves & fresh seafood',
+      highlights: ['Beach Days', 'Fresh Seafood', 'Surf Lesson', 'Rampart Sunsets'],
+      detail: 'Three nights by the ocean. We pick our own fish at the port market, try a surf lesson together, browse art galleries in the medina, and watch Atlantic sunsets from the cannon-lined ramparts.'
+    }
+  ];
+
+  // Route polyline coordinates (following approximate road paths)
+  const routeCoords = [
+    [31.6295, -7.9811],  // Marrakech
+    [31.35, -7.50],
+    [31.0472, -7.1299],  // Ait Benhaddou
+    [31.30, -6.50],
+    [31.4764, -5.9764],  // Dades
+    [31.30, -5.20],
+    [31.0801, -4.0083],  // Merzouga
+    [31.80, -4.20],
+    [32.50, -4.50],
+    [33.30, -4.80],
+    [34.0181, -5.0078],  // Fes
+    [34.40, -5.10],
+    [35.1688, -5.2636],  // Chefchaouen
+    [35.1688, -5.2636],  // (back from Chefchaouen)
+    [34.40, -5.10],
+    [34.0181, -5.0078],  // Fes (transit)
+    [33.60, -6.00],
+    [33.25, -7.58],      // Casablanca area
+    [32.50, -8.50],
+    [31.5085, -9.7595],  // Essaouira
+    [31.5085, -9.7595],
+    [31.6295, -7.9811],  // Back to Marrakech
+  ];
+
+  const map = L.map('map', {
+    scrollWheelZoom: false,
+    zoomControl: true
+  }).setView([32.5, -6.0], 6);
+
+  // Watercolor-style warm map tiles
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 16
+  }).addTo(map);
+
+  // Draw route line
+  const routeLine = L.polyline(routeCoords, {
+    color: '#C49A3C',
+    weight: 3,
+    opacity: 0.7,
+    dashArray: '8, 8',
+    lineCap: 'round'
+  }).addTo(map);
+
+  // Animated dashed overlay
+  const routeGlow = L.polyline(routeCoords, {
+    color: '#C4654A',
+    weight: 5,
+    opacity: 0.15,
+    lineCap: 'round'
+  }).addTo(map);
+
+  const infoBox = document.getElementById('map-info');
+  infoBox.innerHTML = '<div class="info-title">Click any stop on the map</div><div class="info-detail">to see what we\'ll experience there</div>';
+
+  let markers = [];
+
+  stops.forEach(function(stop, idx) {
+    const icon = L.divIcon({
+      className: '',
+      html: '<div class="stop-marker" style="background:' + stop.color + ';">' + stop.num + '</div>',
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
+      popupAnchor: [0, -20]
+    });
+
+    const marker = L.marker([stop.lat, stop.lng], { icon: icon }).addTo(map);
+
+    const popupHtml = '<div class="stop-popup">' +
+      '<h4>' + stop.name + '</h4>' +
+      '<div class="stop-days">' + stop.days + '</div>' +
+      '<div class="stop-desc">' + stop.desc + '</div>' +
+      '<div class="stop-highlights">' +
+        stop.highlights.map(function(h) { return '<span class="highlight-tag">' + h + '</span>'; }).join('') +
+      '</div></div>';
+
+    marker.bindPopup(popupHtml, { maxWidth: 260 });
+
+    marker.on('click', function() {
+      markers.forEach(function(m) {
+        m.getElement().querySelector('.stop-marker').classList.remove('active');
+      });
+      marker.getElement().querySelector('.stop-marker').classList.add('active');
+
+      infoBox.innerHTML = '<div class="info-title">' + stop.name + ' &mdash; ' + stop.days + '</div>' +
+        '<div class="info-detail">' + stop.detail + '</div>';
+      infoBox.style.borderLeftColor = stop.color;
+      infoBox.style.borderLeft = '4px solid ' + stop.color;
+    });
+
+    markers.push(marker);
+  });
+
+  // Fit map to show all stops with padding
+  const group = new L.featureGroup(markers);
+  map.fitBounds(group.getBounds().pad(0.15));
+})();
+</script>
+
+<div class="moroccan-divider">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg>
+</div>
+
+<!-- ═══ FLIGHTS ═══ -->
+<div class="section">
+  <h2>Our Flights</h2>
+  <p class="section-subtitle">Book flights first &mdash; prices shift daily. Our best options from Los Angeles.</p>
+
+  <h3>Nonstop &mdash; Royal Air Maroc</h3>
+  <div class="booking-card flight">
+    <div class="card-header">
+      <span class="card-title">LAX &rarr; Casablanca (CMN) &mdash; Nonstop</span>
+      <span class="card-price flight-price">~$2,750/person RT (~$5,500 for two)</span>
+    </div>
+    <div class="card-details">
+      <span>Boeing 787 Dreamliner &middot; 3x weekly: Tue, Fri, Sun</span>
+      <span>Departs LAX 10:20am &rarr; Arrives CMN 5:25am+1 (~11 hrs)</span>
+      <span>New route launched June 7, 2026 &mdash; high demand due to FIFA World Cup in Morocco</span>
+      <span>Fly into Casablanca, then 45-min domestic hop or 3-hr train to Marrakech</span>
+      <span style="color: var(--terracotta); font-weight: 500;">Price checked March 15, 2026 &mdash; verify on booking site for current rates</span>
+    </div>
+    <a href="https://www.royalairmaroc.com/en_us/flights-from-los-angeles-to-casablanca" target="_blank" class="book-btn primary">Book on Royal Air Maroc</a>
+    <a href="https://www.travelocity.com/lp/flight-routes/royal-air-maroc-from-los-angeles-intl-to-mohammed-v/at/lax/cmn" target="_blank" class="book-btn secondary">Travelocity</a>
+  </div>
+
+  <div class="booking-card flight">
+    <div class="card-header">
+      <span class="card-title">Casablanca &rarr; Marrakech &mdash; Domestic Connector</span>
+      <span class="card-price flight-price">~$30&ndash;$80/person</span>
+    </div>
+    <div class="card-details">
+      <span>45 minutes &middot; Multiple daily departures &middot; Book on Royal Air Maroc</span>
+      <span>Alternative: ONCF train (3 hrs, ~$12/person) &mdash; scenic &amp; budget-friendly</span>
+    </div>
+    <a href="https://www.royalairmaroc.com/en_us/flights-from-casablanca-to-marrakech" target="_blank" class="book-btn primary">Book on Royal Air Maroc</a>
+  </div>
+
+  <h3>One-Stop Alternatives &mdash; Save $1,000+/person</h3>
+  <div class="booking-card flight">
+    <div class="card-header">
+      <span class="card-title">LAX &rarr; Marrakech &mdash; via Paris (Air France)</span>
+      <span class="card-price flight-price">~$1,100&ndash;$2,300/person RT</span>
+    </div>
+    <div class="card-details">
+      <span>Air France via CDG Paris &middot; Most popular connection (57% of travelers)</span>
+      <span>14&ndash;17 hrs total &middot; Up to 42 connecting flights/week</span>
+      <span>Flies direct to Marrakech &mdash; no need for separate domestic connector</span>
+      <span style="color: var(--terracotta); font-weight: 500;">Price checked March 15, 2026 &mdash; use date grid to find cheapest dates</span>
+    </div>
+    <a href="https://wwws.airfrance.us/en-us/flights-from-los-angeles-to-marrakech" target="_blank" class="book-btn primary">Air France</a>
+    <a href="https://www.expedia.com/lp/flights/lax/rak/los-angeles-to-marrakech" target="_blank" class="book-btn secondary">Expedia</a>
+  </div>
+
+  <div class="booking-card flight">
+    <div class="card-header">
+      <span class="card-title">LAX &rarr; Morocco &mdash; via Istanbul, London, or Lisbon</span>
+      <span class="card-price flight-price">~$536&ndash;$1,200/person RT</span>
+    </div>
+    <div class="card-details">
+      <span>Turkish Airlines, British Airways, TAP Portugal, Delta &middot; 1 stop</span>
+      <span>Cheapest fares found on KAYAK &amp; Momondo starting ~$536/person RT</span>
+      <span>October often has lowest fares &middot; Flexible dates = bigger savings</span>
+      <span style="color: var(--terracotta); font-weight: 500;">Price checked March 15, 2026 &mdash; prices change daily</span>
+    </div>
+    <a href="https://www.google.com/travel/flights/flights-from-los-angeles-to-marrakesh.html" target="_blank" class="book-btn primary">Google Flights</a>
+    <a href="https://www.kayak.com/flight-routes/Los-Angeles-LAX/Morocco-MA0" target="_blank" class="book-btn secondary">KAYAK</a>
+    <a href="https://www.momondo.com/flights/los-angeles/morocco" target="_blank" class="book-btn secondary">Momondo</a>
+    <a href="https://www.skyscanner.com/routes/lax/ma/los-angeles-international-to-morocco.html" target="_blank" class="book-btn secondary">Skyscanner</a>
+  </div>
+
+  <div class="tip">
+    <strong>Big decision:</strong> The nonstop on Royal Air Maroc is ~$5,500 for two. A one-stop via Air France or Turkish could save us $1,000&ndash;$3,000+ total &mdash; money we could put toward the private driver, hot air balloon, or a luxury desert camp upgrade. Set a Google Flights price alert and compare!
+  </div>
+</div>
+
+<div class="moroccan-divider">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg>
+</div>
+
+<!-- ═══ ACCOMMODATIONS ═══ -->
+<div class="section">
+  <h2>Where We're Staying</h2>
+  <p class="section-subtitle">Three options for each stop so we can choose together. Candlelit courtyards, rooftop terraces, and plunge pools for two.</p>
+
+  <!-- ── MARRAKECH ── -->
+  <h3>Marrakech &mdash; The Red City <span class="night-label">Nights 1&ndash;3</span></h3>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Yasmine <span class="pick-label">Most Instagrammable</span></span>
+      <span class="card-price">~$100&ndash;$150/night</span>
+    </div>
+    <div class="card-details">
+      <span>Heart of the Medina &middot; Famous green-tiled pool courtyard &middot; Bohemian-romantic style</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Iconic courtyard pool &mdash; stunning photos</li><li>3 outdoor pools &middot; Rooftop terrace</li><li>Great location deep in the medina</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Very popular &mdash; can feel busy</li><li>Rooms are on the smaller side</li><li>Deep medina = harder taxi access</li></ul></div>
+    </div>
+    <a href="https://www.riad-yasmine.com/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.expedia.com/Marrakech-Hotels-Riad-Yasmine-Marrakech.h29473116.Hotel-Information" target="_blank" class="book-btn secondary">View on Expedia</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Kheirredine <span class="pick-label">#1 on TripAdvisor</span></span>
+      <span class="card-price">~$140&ndash;$200/night</span>
+    </div>
+    <div class="card-details">
+      <span>Medina &middot; Panoramic rooftop with sunset views &middot; Plunge pool &middot; Traditional hammam on-site</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>#1 rated riad in Marrakech on TripAdvisor</li><li>On-site hammam &mdash; no need to book elsewhere</li><li>Stunning rooftop sunset views over the medina</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Priciest of the three options</li><li>More traditional/formal style</li><li>Smaller pool than Riad Yasmine</li></ul></div>
+    </div>
+    <a href="https://www.riadkheirredine.com/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.booking.com/hotel/ma/riad-kheirredine.html" target="_blank" class="book-btn secondary">Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Meriem <span class="pick-label">Best Value</span></span>
+      <span class="card-price">~$80&ndash;$120/night</span>
+    </div>
+    <div class="card-details">
+      <span>Medina &middot; Eclectic African-Moroccan decor &middot; Heated plunge pool &middot; Flower-filled rooftop</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Best price of the three &mdash; great value</li><li>Excellent included breakfast</li><li>Unique, colorful decor &middot; Very personal feel</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Smaller and more intimate (fewer amenities)</li><li>Less polished than the other two</li><li>Pool is small plunge-style only</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/riad-meriem.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+
+  <!-- ── DADES VALLEY ── -->
+  <h3>Dades Valley &mdash; The Gorge <span class="night-label">Night 4</span></h3>
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Hotel Xaluca Dades</span>
+      <span class="card-price">~$50&ndash;$80/night</span>
+    </div>
+    <div class="card-details">
+      <span>Dramatic canyon setting &middot; Traditional kasbah architecture &middot; Pool &middot; Restaurant</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Incredible gorge views &middot; Pool</li><li>Well-run with reliable quality</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>More hotel-like, less intimate riad feel</li><li>Often included in desert tour anyway</li></ul></div>
+    </div>
+    <a href="https://xaluca.com/hotelxalucadades" target="_blank" class="book-btn primary">Book Direct</a>
+  </div>
+
+  <div class="tip">
+    <strong>Note:</strong> Night 4 is often included in the 3-day desert tour package. Confirm with our tour operator before booking separately.
+  </div>
+
+  <!-- ── SAHARA DESERT ── -->
+  <h3>Sahara Desert &mdash; Under the Stars <span class="night-label">Night 5</span></h3>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Sahara Stars Camp <span class="pick-label">Great All-Rounder</span></span>
+      <span class="card-price">~$100&ndash;$155/night for two</span>
+    </div>
+    <div class="card-details">
+      <span>Erg Chebbi, Merzouga &middot; 16 luxury tents &middot; Private bathrooms &middot; A/C</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Dinner + breakfast included</li><li>Camel trek included &middot; Berber music</li><li>Good reviews &middot; Well-established camp</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>16 tents = can feel less private</li><li>Mid-tier luxury (not the most upscale)</li></ul></div>
+    </div>
+    <a href="https://saharastarscamp.com/book-sahara-stars-camp/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.expedia.com/Taouz-Hotels-Sahara-Stars-Camp.h30875251.Hotel-Information" target="_blank" class="book-btn secondary">Expedia</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Royal Luxury Camp <span class="pick-label">Most Romantic</span></span>
+      <span class="card-price">~$130&ndash;$200/night for two</span>
+    </div>
+    <div class="card-details">
+      <span>Erg Chebbi dunes &middot; King beds &middot; Full en-suite bathrooms &middot; A/C &middot; Moroccan furnishings</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Top-tier luxury tents &middot; Beautiful decor</li><li>More intimate &middot; Private dining options</li><li>Feels like a 5-star hotel in the desert</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Pricier than Sahara Stars</li><li>Newer &mdash; fewer reviews available</li></ul></div>
+    </div>
+    <a href="https://royalluxurycamp.com/" target="_blank" class="book-btn primary">Book Direct</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Tiziri Eco Camp <span class="pick-label">Eco-Conscious</span></span>
+      <span class="card-price">~$90&ndash;$140/night for two</span>
+    </div>
+    <div class="card-details">
+      <span>Erg Chebbi &middot; Only eco-luxury camp in the area &middot; Sustainable design &middot; En-suite tents</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Eco-friendly &middot; Unique sustainable concept</li><li>Beautiful modern design &middot; Smaller camp</li><li>Great for couples who care about impact</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Less traditional Berber experience</li><li>Fewer included activities</li></ul></div>
+    </div>
+    <a href="https://www.tiziricamp.com/" target="_blank" class="book-btn primary">Book Direct</a>
+  </div>
+
+  <!-- ── FES ── -->
+  <h3>Fes &mdash; The Ancient Capital <span class="night-label">Nights 6&ndash;9</span></h3>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Laaroussa &mdash; Hotel & Spa <span class="pick-label">Our Top Pick</span></span>
+      <span class="card-price">~$107&ndash;$180/night</span>
+    </div>
+    <div class="card-details">
+      <span>Heart of the Medina &middot; 17th-century restored palace &middot; Award-winning &middot; 9.6/10 rating</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Award-winning &middot; 9.6/10 on Booking.com</li><li>In-house restaurant + hammam spa</li><li>2 pool areas &middot; Orange tree courtyard</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Most expensive Fes option</li><li>Popular &mdash; books up quickly in peak season</li><li>Deep in the medina (no vehicle access)</li></ul></div>
+    </div>
+    <a href="https://riad-laaroussa.com/rates/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.booking.com/hotel/ma/riad-laaroussa.html" target="_blank" class="book-btn secondary">Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Fes &mdash; Relais & Ch&acirc;teaux <span class="pick-label">Most Luxurious</span></span>
+      <span class="card-price">~$150&ndash;$250/night</span>
+    </div>
+    <div class="card-details">
+      <span>Medina &middot; Michelin Key awarded &middot; Andalusian-Moorish d&eacute;cor &middot; Pool &middot; Rooftop bar</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Michelin Key &middot; Relais & Ch&acirc;teaux quality</li><li>Stunning Andalusian-Moorish interiors</li><li>Full spa &middot; Pool &middot; Panoramic terrace &middot; Bar</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Splurge pricing &mdash; highest of the three</li><li>More formal/hotel atmosphere</li><li>Less intimate &mdash; feels grander than cozy</li></ul></div>
+    </div>
+    <a href="https://www.riadfes.com/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.booking.com/hotel/ma/riad-fes.html" target="_blank" class="book-btn secondary">Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Fes Maya Suite & Spa <span class="pick-label">Hidden Gem</span></span>
+      <span class="card-price">~$70&ndash;$100/night</span>
+    </div>
+    <div class="card-details">
+      <span>Quiet medina alley &middot; Stunning plasterwork &middot; Exquisite zellige tiles &middot; Spa on-site</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Incredible value &mdash; luxury feel under $100</li><li>Beautiful traditional craftsmanship</li><li>Quiet, tucked-away location &middot; Very private</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Smaller property &mdash; fewer amenities</li><li>No pool (has spa instead)</li><li>Less established name than the other two</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/riad-fes-maya-suite-spa.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+
+  <!-- ── CHEFCHAOUEN ── -->
+  <h3>Chefchaouen &mdash; The Blue Pearl <span class="night-label">Nights 10&ndash;11</span></h3>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Dar Jasmine <span class="pick-label">Best Views</span></span>
+      <span class="card-price">~$120&ndash;$200/night</span>
+    </div>
+    <div class="card-details">
+      <span>Hillside opposite the medina &middot; Panoramic views of the entire blue city &middot; Pool &middot; Gardens</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Jaw-dropping panoramic views of the blue city</li><li>Pool &middot; Beautiful gardens &middot; 9.3/10 rating</li><li>Multiple lounge areas &middot; Boutique feel</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Outside the medina &mdash; short walk or taxi in</li><li>Priciest Chefchaouen option by far</li><li>Fewer rooms = books up fast</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/dar-jasmine-chefchaouen.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Casa Perleta <span class="pick-label">Our Top Pick</span></span>
+      <span class="card-price">~$60&ndash;$100/night</span>
+    </div>
+    <div class="card-details">
+      <span>#1 rated boutique hotel in Chefchaouen &middot; Blue medina &middot; Rooftop terrace &middot; 10 rooms</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>#1 rated &middot; Incredible guest reviews</li><li>Right in the heart of the blue medina</li><li>Rooftop with mountain views &middot; Free breakfast</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Only 10 rooms &mdash; sells out months ahead</li><li>No pool or spa</li><li>Basic rooms (charming but simple)</li></ul></div>
+    </div>
+    <a href="https://casaperleta.com/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.booking.com/hotel/ma/casa-perleta.html" target="_blank" class="book-btn secondary">Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Casa Sabila <span class="pick-label">Best Value</span></span>
+      <span class="card-price">~$30&ndash;$70/night</span>
+    </div>
+    <div class="card-details">
+      <span>Medina location &middot; 9.4/10 rating &middot; Rooftop breakfast with blue city views</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Incredible value &mdash; under $70/night</li><li>9.4/10 rating &middot; Guests rave about the hosts</li><li>Rooftop breakfast with views &middot; Very cozy</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Smaller, simpler property</li><li>Fewer amenities (no pool, no spa)</li><li>Less &ldquo;boutique hotel&rdquo; and more &ldquo;guesthouse&rdquo;</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/casa-sabila.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+
+  <!-- ── ESSAOUIRA ── -->
+  <h3>Essaouira &mdash; Wind & Waves <span class="night-label">Nights 12&ndash;14</span></h3>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Chbanate <span class="pick-label">Most Romantic</span></span>
+      <span class="card-price">~$100&ndash;$160/night</span>
+    </div>
+    <div class="card-details">
+      <span>18th-century Ca&iuml;d&rsquo;s residence &middot; Suites with fireplaces &middot; Suspended beds &middot; Hammock chairs</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Suites designed specifically for couples</li><li>Cozy fireplaces &middot; Swing chairs &middot; Bathtubs</li><li>Panoramic suite has private terrace</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Priciest Essaouira option</li><li>Smaller property &mdash; limited availability</li><li>No pool (rooftop terrace instead)</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/riad-chbanate.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Villa Maroc <span class="pick-label">Classic Choice</span></span>
+      <span class="card-price">~$80&ndash;$130/night</span>
+    </div>
+    <div class="card-details">
+      <span>First riad-hotel in Morocco (est. 1990) &middot; Four 18th-century houses &middot; 21 rooms &middot; Ocean nearby</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Iconic &middot; Established reputation since 1990</li><li>In-house restaurant &middot; Spa &middot; Rooftop terrace</li><li>Good mid-range price &middot; Reliable quality</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>Larger property &mdash; less intimate</li><li>Some rooms are better than others</li><li>D&eacute;cor is classic but not as fresh as newer riads</li></ul></div>
+    </div>
+    <a href="https://villa-maroc.com/" target="_blank" class="book-btn primary">Book Direct</a>
+    <a href="https://www.booking.com/hotel/ma/riad-villa-maroc-essaouira.html" target="_blank" class="book-btn secondary">Booking.com</a>
+  </div>
+
+  <div class="booking-card">
+    <div class="card-header">
+      <span class="card-title">Riad Dar Maya <span class="pick-label">Boutique Gem</span></span>
+      <span class="card-price">~$70&ndash;$110/night</span>
+    </div>
+    <div class="card-details">
+      <span>Just 5 rooms &middot; Polished tadelakt walls &middot; Contemporary Moroccan-European design</span>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><span class="pros-label">Pros</span><ul><li>Only 5 rooms &mdash; feels completely private</li><li>Stunning minimalist Moroccan design</li><li>Very peaceful &middot; Attentive personal service</li></ul></div>
+      <div class="cons"><span class="cons-label">Cons</span><ul><li>No restaurant, pool, or spa on-site</li><li>Very small &mdash; books up quickly</li><li>More modern &mdash; less traditional Moroccan feel</li></ul></div>
+    </div>
+    <a href="https://www.booking.com/hotel/ma/riad-dar-maya.html" target="_blank" class="book-btn primary">Book on Booking.com</a>
+  </div>
+</div>
+
+<div class="moroccan-divider">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg>
+</div>
+
+<!-- ═══ DESERT TOUR ═══ -->
+<div class="section">
+  <h2>Sahara Desert Tour</h2>
+  <p class="section-subtitle">Days 4&ndash;6: Over the Atlas Mountains, through ancient kasbahs, and into the golden Sahara dunes together.</p>
+
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Private 3-Day Desert Tour for Two</span>
+      <span class="card-price activity-price">~$250&ndash;$400/person</span>
+    </div>
+    <div class="card-details">
+      <span>Private driver &middot; All fuel &middot; 2 nights (kasbah + luxury desert camp)</span>
+      <span>Sunset camel trek + night under the stars included</span>
+      <span>Marrakech &rarr; Atlas Mountains &rarr; A&iuml;t Benhaddou &rarr; Dades &rarr; Merzouga &rarr; Fes</span>
+    </div>
+    <a href="https://www.getyourguide.com/marrakech-l208/3-day-desert-tour-from-marrakech-to-fes-via-merzouga-t71090/" target="_blank" class="book-btn green">GetYourGuide</a>
+    <a href="https://www.viator.com/searchResults/all?text=marrakech+to+fes+desert+tour+3+day" target="_blank" class="book-btn secondary">Viator</a>
+  </div>
+
+  <div class="tip">
+    <strong>Tip:</strong> Ask our Marrakech riad to recommend a local operator &mdash; they often get better rates and can arrange a private, romantic tour just for us.
+  </div>
+</div>
+
+<div class="moroccan-divider">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg>
+</div>
+
+<!-- ═══ ACTIVITIES ═══ -->
+<div class="section">
+  <h2>Experiences Together</h2>
+  <p class="section-subtitle">The moments that will make this trip unforgettable.</p>
+
+  <h3>Hot Air Balloon Over Marrakech</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Sunrise Balloon Ride for Two (Day 1 or 2) <span class="pick-label">Bucket List</span></span>
+      <span class="card-price activity-price">~$180&ndash;$250/person</span>
+    </div>
+    <div class="card-details">
+      <span>Float over the palmeraie, olive groves &amp; Atlas Mountains at sunrise</span>
+      <span>~1 hour flight + traditional Berber breakfast on landing</span>
+      <span>Hotel pickup at ~5:30am &middot; Back by 9am &middot; Includes champagne toast</span>
+    </div>
+    <a href="https://www.getyourguide.com/marrakech-l208/marrakech-hot-air-balloon-ride-with-traditional-breakfast-t29536/" target="_blank" class="book-btn green">GetYourGuide</a>
+    <a href="https://www.viator.com/searchResults/all?text=marrakech+hot+air+balloon" target="_blank" class="book-btn secondary">Viator</a>
+  </div>
+
+  <h3>Zellige Pottery Workshop &mdash; Fes</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Traditional Pottery &amp; Tile Painting (Day 7 or 8) <span class="pick-label">Make a Souvenir Together</span></span>
+      <span class="card-price activity-price">~$30&ndash;$50/person</span>
+    </div>
+    <div class="card-details">
+      <span>Visit a working pottery cooperative in the Fes medina</span>
+      <span>Try your hand at painting traditional zellige tiles or throwing pottery on a wheel</span>
+      <span>Take home your creations as a one-of-a-kind honeymoon souvenir</span>
+    </div>
+    <a href="https://www.airbnb.com/s/Fez/experiences?query=pottery%20class%20Fez" target="_blank" class="book-btn green">Airbnb Experiences</a>
+    <a href="https://www.getyourguide.com/fez-l209/?q=pottery" target="_blank" class="book-btn secondary">GetYourGuide</a>
+  </div>
+
+  <h3>Surfing Lesson &mdash; Essaouira</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Couples Surf Lesson on the Atlantic (Day 12 or 13) <span class="pick-label">Adventure</span></span>
+      <span class="card-price activity-price">~$30&ndash;$50/person</span>
+    </div>
+    <div class="card-details">
+      <span>Essaouira&rsquo;s long sandy beach is one of Morocco&rsquo;s best beginner surf spots</span>
+      <span>2&ndash;3 hour lesson with boards, wetsuit &amp; instructor included</span>
+      <span>October has warm water &amp; consistent swells &mdash; perfect for first-timers</span>
+    </div>
+    <a href="https://www.getyourguide.com/essaouira-l588/?q=surf+lesson" target="_blank" class="book-btn green">GetYourGuide</a>
+    <a href="https://www.airbnb.com/s/Essaouira/experiences?query=surf%20lesson%20Essaouira" target="_blank" class="book-btn secondary">Airbnb Experiences</a>
+  </div>
+
+  <h3>Berber Village Overnight &mdash; Atlas Mountains</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Stay with a Berber Family in Imlil (Optional Extra Night) <span class="pick-label">Off the Beaten Path</span></span>
+      <span class="card-price activity-price">~$60&ndash;$100 for two (meals included)</span>
+    </div>
+    <div class="card-details">
+      <span>Spend a night in the High Atlas village of Imlil (~90 min from Marrakech)</span>
+      <span>Home-cooked tagine on the rooftop &middot; Hike to waterfalls &middot; Mountain views at dawn</span>
+      <span>A total contrast to the cities &mdash; peaceful, authentic, unforgettable</span>
+    </div>
+    <a href="https://www.getyourguide.com/marrakech-l208/?q=imlil+atlas+mountains" target="_blank" class="book-btn green">GetYourGuide</a>
+    <a href="https://www.airbnb.com/s/Imlil--Morocco/homes" target="_blank" class="book-btn secondary">Airbnb Stays in Imlil</a>
+  </div>
+
+  <h3>Cooking Classes</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Marrakech Cooking Class (Day 3)</span>
+      <span class="card-price activity-price">~$30&ndash;$50/person</span>
+    </div>
+    <div class="card-details">
+      <span>Half-day: shop the market together + cook tagine, couscous, mint tea</span>
+    </div>
+    <a href="https://www.airbnb.com/s/Marrakech/experiences?query=cooking%20class%20Marrakech" target="_blank" class="book-btn green">Airbnb Experiences</a>
+    <a href="https://www.cookly.me/cooking-class/marrakech/" target="_blank" class="book-btn secondary">Cookly</a>
+  </div>
+
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Fes Cooking Class (Day 8)</span>
+      <span class="card-price activity-price">~$30&ndash;$50/person</span>
+    </div>
+    <div class="card-details">
+      <span>Refined Fassi cuisine: pastilla, rfissa, traditional sweets</span>
+    </div>
+    <a href="https://www.airbnb.com/s/Fez/experiences?query=cooking%20class%20Fez" target="_blank" class="book-btn green">Airbnb Experiences</a>
+    <a href="https://www.cookly.me/cooking-class/fez/" target="_blank" class="book-btn secondary">Cookly</a>
+  </div>
+
+  <h3>Couples Hammam & Spa</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Heritage Spa &mdash; Marrakech (Day 2)</span>
+      <span class="card-price activity-price">~$35&ndash;$60/person</span>
+    </div>
+    <div class="card-details">
+      <span>Couples hammam + scrub + massage in a beautiful traditional setting</span>
+    </div>
+    <a href="https://www.heritagespamarrakech.com/" target="_blank" class="book-btn green">Book Heritage Spa</a>
+  </div>
+
+  <h3>Private Driver &mdash; City to City <span class="pick-label">Recommended</span></h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Full-Trip Private Driver (Days 1&ndash;15)</span>
+      <span class="card-price activity-price">~$100&ndash;$150/day</span>
+    </div>
+    <div class="card-details">
+      <span>A/C vehicle &middot; English-speaking driver &middot; All fuel &amp; tolls included</span>
+      <span>Flexible stops at viewpoints, hidden villages &amp; roadside gems</span>
+      <span>~$1,400&ndash;$2,100 total for 14 days &mdash; covers ALL intercity transport + airport transfers</span>
+      <span>No bus schedules, no luggage hassles, pure honeymoon freedom</span>
+    </div>
+    <a href="https://www.getyourguide.com/marrakech-l208/?q=private+driver+morocco" target="_blank" class="book-btn green">GetYourGuide</a>
+    <a href="https://www.viator.com/searchResults/all?text=morocco+private+driver" target="_blank" class="book-btn secondary">Viator</a>
+  </div>
+
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Per-Leg Private Transfers (Budget Alternative)</span>
+      <span class="card-price activity-price">~$80&ndash;$180/leg</span>
+    </div>
+    <div class="card-details">
+      <span>Book individual transfers between cities if full-trip driver is over budget</span>
+      <span>Fes &rarr; Chefchaouen ~$100 &middot; Chefchaouen &rarr; Essaouira ~$180 &middot; Essaouira &rarr; Marrakech ~$80</span>
+      <span>Total for individual legs: ~$360&ndash;$500 (vs $10&ndash;$15/person per bus)</span>
+    </div>
+    <a href="https://www.daytrip.com/" target="_blank" class="book-btn green">Daytrip.com</a>
+    <a href="https://www.welcomepickups.com/morocco/" target="_blank" class="book-btn secondary">Welcome Pickups</a>
+  </div>
+
+  <div class="tip">
+    <strong>Tip:</strong> For a honeymoon, the private driver is worth every penny. Ask your Marrakech riad to connect you with a trusted local driver &mdash; riads often get better rates than booking platforms, and you&rsquo;ll get a more personal experience.
+  </div>
+
+  <h3>Travel Insurance</h3>
+  <div class="booking-card activity">
+    <div class="card-header">
+      <span class="card-title">Travel Insurance (Medical + Trip Cancellation)</span>
+      <span class="card-price activity-price">~$80&ndash;$150 total</span>
+    </div>
+    <div class="card-details">
+      <span>Covers medical emergencies, trip cancellation, lost luggage</span>
+    </div>
+    <a href="https://www.worldnomads.com/" target="_blank" class="book-btn green">World Nomads</a>
+    <a href="https://safetywing.com/" target="_blank" class="book-btn secondary">SafetyWing</a>
+  </div>
+</div>
+
+<div class="moroccan-divider">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg>
+</div>
+
+<!-- ═══ CHECKLIST ═══ -->
+<div class="section">
+  <h2>Our Booking Checklist</h2>
+  <p class="section-subtitle">Book in this order. Check off as we go!</p>
+  <ul class="checklist">
+    <li><div class="checkbox"></div><div><strong>1. Flights</strong> &mdash; LAX &rarr; Casablanca nonstop on Royal Air Maroc (+ Casablanca &rarr; Marrakech connector)</div></li>
+    <li><div class="checkbox"></div><div><strong>2. Marrakech riad</strong> &mdash; Riad Yasmine or Riad Meriem (3 nights)</div></li>
+    <li><div class="checkbox"></div><div><strong>3. Desert tour</strong> &mdash; 3-day Marrakech &rarr; Fes via Sahara (includes nights 4 &amp; 5)</div></li>
+    <li><div class="checkbox"></div><div><strong>4. Fes riad</strong> &mdash; Riad Laaroussa (3&ndash;4 nights)</div></li>
+    <li><div class="checkbox"></div><div><strong>5. Chefchaouen riad</strong> &mdash; Casa Perleta (2 nights) &mdash; only 10 rooms!</div></li>
+    <li><div class="checkbox"></div><div><strong>6. Essaouira riad</strong> &mdash; Villa Maroc (3 nights)</div></li>
+    <li><div class="checkbox"></div><div><strong>7. Private driver</strong> &mdash; Full-trip or per-leg transfers between cities</div></li>
+    <li><div class="checkbox"></div><div><strong>8. Hot air balloon</strong> &mdash; Sunrise ride over Marrakech (Day 1 or 2)</div></li>
+    <li><div class="checkbox"></div><div><strong>9. Cooking classes</strong> &mdash; Marrakech + Fes</div></li>
+    <li><div class="checkbox"></div><div><strong>10. Couples hammam</strong> &mdash; Heritage Spa + Riad Laaroussa spa</div></li>
+    <li><div class="checkbox"></div><div><strong>11. Pottery workshop</strong> &mdash; Zellige tile painting in Fes</div></li>
+    <li><div class="checkbox"></div><div><strong>12. Surf lesson</strong> &mdash; Couples lesson in Essaouira</div></li>
+    <li><div class="checkbox"></div><div><strong>13. Berber village overnight</strong> &mdash; Imlil, Atlas Mountains (optional extra night)</div></li>
+    <li><div class="checkbox"></div><div><strong>14. Travel insurance</strong> &mdash; World Nomads or SafetyWing</div></li>
+    <li><div class="checkbox"></div><div><strong>15. Return flights</strong> &mdash; Marrakech &rarr; Casablanca &rarr; LAX</div></li>
+  </ul>
+</div>
+
+<div class="footer">
+  <span class="footer-ornament">&diams; &diams; &diams;</span>
+  Here's to the adventure of a lifetime &mdash; Jay & Raye
+</div>
+
+</div>
+</body>
+</html>

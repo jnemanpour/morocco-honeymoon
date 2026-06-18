@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costs & Budget — Jay & Raye's Morocco Honeymoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Expense tracker */
+  .tracker-form { display: grid; grid-template-columns: 1.2fr 1.4fr 1fr 0.9fr auto; gap: 10px; align-items: end; margin-top: 8px; }
+  .tracker-form .fld { display: flex; flex-direction: column; gap: 4px; }
+  .tracker-form label { font-size: 0.78em; color: var(--text-light); font-family: 'Lora', serif; letter-spacing: 0.3px; }
+  .tracker-form input, .tracker-form select {
+    font-family: 'Lora', serif; font-size: 0.92em; padding: 9px 11px;
+    border: 1px solid rgba(196,154,60,0.35); border-radius: 10px; background: var(--warm-white); color: var(--text-dark);
+  }
+  .tracker-form input:focus, .tracker-form select:focus { outline: none; border-color: var(--terracotta); box-shadow: 0 0 0 3px rgba(196,101,74,0.12); }
+  .add-btn { background: linear-gradient(135deg, var(--teal), #1A7B6A); color: white; border: none; cursor: pointer; padding: 10px 22px; border-radius: 25px; font-family: 'Lora', serif; font-weight: 500; font-size: 0.9em; transition: all 0.2s ease; }
+  .add-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(26,107,90,0.25); }
+  .exp-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 0.92em; }
+  .exp-table th, .exp-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(196,154,60,0.15); }
+  .exp-table th { font-family: 'Playfair Display', serif; font-size: 0.9em; color: var(--text-dark); }
+  .exp-table td.num, .exp-table th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .exp-table .cat-pill { font-size: 0.78em; padding: 2px 10px; border-radius: 12px; background: var(--sand); color: var(--text-medium); }
+  .del-x { cursor: pointer; color: var(--terracotta); border: none; background: none; font-size: 1.1em; line-height: 1; padding: 2px 6px; border-radius: 6px; }
+  .del-x:hover { background: rgba(196,101,74,0.1); }
+  .tracker-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 14px; margin: 22px 0 6px; }
+  .ts-card { background: linear-gradient(135deg, var(--gold-pale), var(--warm-white)); border: 1px solid rgba(196,154,60,0.18); border-radius: 14px; padding: 16px 18px; text-align: center; }
+  .ts-card .ts-num { font-family: 'Playfair Display', serif; font-size: 1.7em; font-weight: 700; color: var(--terracotta); }
+  .ts-card .ts-lbl { font-size: 0.8em; color: var(--text-light); margin-top: 2px; }
+  .cat-breakdown { margin-top: 16px; font-size: 0.9em; }
+  .cat-bar-row { display: grid; grid-template-columns: 130px 1fr 70px; align-items: center; gap: 10px; margin: 7px 0; }
+  .cat-bar-track { background: var(--sand); border-radius: 8px; height: 14px; overflow: hidden; }
+  .cat-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--terracotta)); border-radius: 8px; }
+  .tracker-tools { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .tool-btn { font-family: 'Lora', serif; font-size: 0.82em; padding: 7px 16px; border-radius: 20px; border: 1px solid rgba(196,154,60,0.35); background: var(--warm-white); color: var(--text-medium); cursor: pointer; }
+  .tool-btn:hover { background: var(--gold-pale); }
+  .empty-note { text-align: center; color: var(--text-light); font-style: italic; padding: 22px; }
+  @media (max-width: 720px) { .tracker-form { grid-template-columns: 1fr 1fr; } .tracker-form .add-wrap { grid-column: 1 / -1; } .add-btn { width: 100%; } }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Jay <span class="amp">&</span> Raye <span style="opacity:.6;font-weight:400;">· Morocco</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="accommodations.html">Stays</a></li>
+      <li><a href="activities.html">Activities</a></li>
+      <li><a href="costs.html" class="active">Costs</a></li>
+      <li class="dropdown"><a href="#" aria-haspopup="true">Cities</a>
+        <ul class="dropdown-menu">
+          <li><a href="marrakech.html"><span class="menu-num">1</span>Marrakech</a></li>
+          <li><a href="sahara.html"><span class="menu-num">2</span>Sahara Desert</a></li>
+          <li><a href="fes.html"><span class="menu-num">3</span>Fes</a></li>
+          <li><a href="chefchaouen.html"><span class="menu-num">4</span>Chefchaouen</a></li>
+          <li><a href="casablanca.html"><span class="menu-num">5</span>Casablanca</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="hero city-hero theme-ocean">
+  <div class="hero-pattern"></div><div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Budget & Spending</div>
+    <h1>Costs</h1>
+    <div class="hero-sub">What it costs — and a live tracker for what we actually spend</div>
+  </div>
+</div>
+
+<!-- LIVE TRACKER -->
+<div class="section">
+  <h2>💸 Live Expense Tracker</h2>
+  <p class="section-subtitle">Add expenses as we go — totals update instantly and save in this browser</p>
+
+  <form class="tracker-form" id="expForm" autocomplete="off">
+    <div class="fld"><label for="eDate">Date</label><input type="date" id="eDate" required></div>
+    <div class="fld"><label for="eDesc">What for?</label><input type="text" id="eDesc" placeholder="e.g. Riad Yasmine deposit" required></div>
+    <div class="fld"><label for="eCat">Category</label>
+      <select id="eCat">
+        <option>Flights</option><option selected>Lodging</option><option>Desert Tour</option><option>Transport</option><option>Activities</option><option>Food & Drink</option><option>Shopping</option><option>Insurance</option><option>Other</option>
+      </select>
+    </div>
+    <div class="fld"><label for="eAmt">Amount (USD)</label><input type="number" id="eAmt" placeholder="0.00" step="0.01" min="0" required></div>
+    <div class="fld add-wrap"><label>&nbsp;</label><button type="submit" class="add-btn">+ Add</button></div>
+  </form>
+
+  <div class="tracker-summary">
+    <div class="ts-card"><div class="ts-num" id="sumTotal">$0</div><div class="ts-lbl">Total Spent</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumCount">0</div><div class="ts-lbl">Expenses Logged</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumPerPerson">$0</div><div class="ts-lbl">Per Person</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumVsBudget">—</div><div class="ts-lbl">vs. Likely Budget ($4,100)</div></div>
+  </div>
+
+  <div class="cat-breakdown" id="catBreakdown"></div>
+
+  <table class="exp-table" id="expTable">
+    <thead><tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount</th><th></th></tr></thead>
+    <tbody id="expBody"></tbody>
+  </table>
+  <div class="empty-note" id="emptyNote">No expenses yet — add the first one above. (Tip: log Riad deposits as you book them!)</div>
+
+  <div class="tracker-tools">
+    <button class="tool-btn" id="exportBtn">⬇ Export CSV</button>
+    <button class="tool-btn" id="clearBtn">🗑 Clear all</button>
+    <span style="font-size:0.8em;color:var(--text-light);align-self:center;">Saved automatically in this browser (localStorage).</span>
+  </div>
+</div>
+
+<!-- WHAT'S BOOKED -->
+<div class="section">
+  <h2>What's Locked In</h2>
+  <div class="booking-card flight">
+    <div class="card-header"><span class="card-title">✈️ Flights — Royal Air Maroc (round trip, 2 travelers)</span><span class="card-price flight-price">$114 out of pocket</span></div>
+    <div class="card-details">
+      <span>Paid with <strong>158,706 Chase points + $114</strong> to card · Confirmation BLEYOX</span>
+      <span>LAX ⇄ Casablanca nonstop · Aug 23 – Sep 4, 2026 (cash value was ~$1,701)</span>
+    </div>
+  </div>
+  <div class="tip"><strong>Huge win:</strong> covering the flights almost entirely with points means our whole budget below is essentially everything <em>except</em> airfare. 🎉</div>
+</div>
+
+<!-- BUDGET ESTIMATE -->
+<div class="section">
+  <h2>Planning Budget</h2>
+  <p class="section-subtitle">Estimates for the two of us · 10 nights · USD · excludes flights (covered by points)</p>
+  <table class="cost-table">
+    <thead><tr><th>Category</th><th class="num">Lean</th><th class="num">Likely</th><th class="num">Splurge</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">Lodging — Marrakech (3 nights)</td><td class="num">$240</td><td class="num">$450</td><td class="num">$855</td></tr>
+      <tr><td class="cat">Lodging — Fes (3 nights)</td><td class="num">$330</td><td class="num">$600</td><td class="num">$900</td></tr>
+      <tr><td class="cat">Lodging — Chefchaouen (2 nights)</td><td class="num">$110</td><td class="num">$200</td><td class="num">$450</td></tr>
+      <tr><td class="cat">Lodging — Casablanca (1 night)</td><td class="num">$70</td><td class="num">$120</td><td class="num">$130</td></tr>
+      <tr><td class="cat">3-Day Sahara Tour <span class="sub">(incl. Dades + desert-camp nights, driver, camel trek)</span></td><td class="num">$300</td><td class="num">$650</td><td class="num">$800</td></tr>
+      <tr><td class="cat">City-to-city transfers <span class="sub">(CMN→Marrakech, Fes→Chaouen, Chaouen→Casa)</span></td><td class="num">$60</td><td class="num">$390</td><td class="num">$500</td></tr>
+      <tr><td class="cat">Activities <span class="sub">(balloon, hammam, cooking, pottery, guides)</span></td><td class="num">$350</td><td class="num">$780</td><td class="num">$1,100</td></tr>
+      <tr><td class="cat">Food & drink <span class="sub">(~10 days, 2 people)</span></td><td class="num">$400</td><td class="num">$600</td><td class="num">$900</td></tr>
+      <tr><td class="cat">Travel insurance</td><td class="num">$90</td><td class="num">$120</td><td class="num">$150</td></tr>
+      <tr><td class="cat">Tips, entry fees, SIM, misc.</td><td class="num">$100</td><td class="num">$190</td><td class="num">$300</td></tr>
+      <tr><td class="cat">Flights (out of pocket)</td><td class="num">$114</td><td class="num">$114</td><td class="num">$114</td></tr>
+      <tr class="total-row"><td>Estimated Total (for two)</td><td class="num">~$2,164</td><td class="num">~$4,214</td><td class="num">~$6,199</td></tr>
+    </tbody>
+  </table>
+  <div class="tip"><strong>Bottom line:</strong> with flights on points, a comfortable-but-not-extravagant honeymoon runs roughly <strong>$4,000–4,500 for both of us</strong> on the ground. Lean it out toward ~$2,200, or splurge on luxury riads & a private driver toward ~$6,200.</div>
+</div>
+
+<div class="section">
+  <h2>Booking Checklist</h2>
+  <p class="section-subtitle">Synced across every page &middot; tap to check off &middot; saved in your browser</p>
+  <div class="booking-checklist-mount"></div>
+</div>
+
+<div class="moroccan-divider"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14 8.5L20.5 8.5L15 12.5L17 19L12 15L7 19L9 12.5L3.5 8.5L10 8.5L12 2Z" fill="#C49A3C" opacity="0.4"/></svg></div>
+
+<div class="footer">
+  <span class="footer-ornament">&diams; &diams; &diams;</span>
+  Here's to the adventure of a lifetime — Jay & Raye
+  <div class="footer-links">
+    <a href="index.html">Home</a> · <a href="itinerary.html">Itinerary</a> · <a href="accommodations.html">Stays</a> · <a href="activities.html">Activities</a> · <a href="costs.html">Costs</a> · <a href="marrakech.html">Marrakech</a> · <a href="sahara.html">Sahara</a> · <a href="fes.html">Fes</a> · <a href="chefchaouen.html">Chefchaouen</a> · <a href="casablanca.html">Casablanca</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function() {
+  const KEY = 'morocco_honeymoon_expenses_v1';
+  const BUDGET = 4100; // likely on-the-ground + flights baseline for the "vs budget" gauge
+  const fmt = n => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  const catColors = {}; // not needed; single gradient
+  let expenses = [];
+
+  try { expenses = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { expenses = []; }
+
+  const $ = id => document.getElementById(id);
+  const body = $('expBody'), emptyNote = $('emptyNote');
+
+  // Seed the date field with today
+  $('eDate').valueAsDate = new Date();
+
+  function save() { localStorage.setItem(KEY, JSON.stringify(expenses)); }
+
+  function render() {
+    body.innerHTML = '';
+    let total = 0;
+    const byCat = {};
+    expenses.slice().sort((a,b) => (a.date||'').localeCompare(b.date||'')).forEach(function(e) {
+      total += Number(e.amt) || 0;
+      byCat[e.cat] = (byCat[e.cat] || 0) + (Number(e.amt) || 0);
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + (e.date || '') + '</td>' +
+        '<td>' + escapeHtml(e.desc) + '</td>' +
+        '<td><span class="cat-pill">' + escapeHtml(e.cat) + '</span></td>' +
+        '<td class="num">' + fmt(Number(e.amt) || 0) + '</td>' +
+        '<td class="num"><button class="del-x" data-id="' + e.id + '" title="Delete">&times;</button></td>';
+      body.appendChild(tr);
+    });
+
+    emptyNote.style.display = expenses.length ? 'none' : 'block';
+    $('expTable').style.display = expenses.length ? 'table' : 'none';
+
+    $('sumTotal').textContent = fmt(total);
+    $('sumCount').textContent = expenses.length;
+    $('sumPerPerson').textContent = fmt(total / 2);
+    const pct = Math.round((total / BUDGET) * 100);
+    $('sumVsBudget').textContent = pct + '%';
+    $('sumVsBudget').style.color = pct > 100 ? '#A8533C' : '#1A6B5A';
+
+    // category breakdown bars
+    const cb = $('catBreakdown');
+    const cats = Object.keys(byCat).sort((a,b) => byCat[b] - byCat[a]);
+    const max = Math.max.apply(null, cats.map(c => byCat[c]).concat([1]));
+    cb.innerHTML = cats.length ? '<h3 style="font-family:\'Playfair Display\',serif;color:var(--terracotta);font-style:italic;font-size:1.05em;margin:6px 0 10px;">By category</h3>' +
+      cats.map(c => '<div class="cat-bar-row"><span>' + escapeHtml(c) + '</span><span class="cat-bar-track"><span class="cat-bar-fill" style="width:' + Math.round((byCat[c]/max)*100) + '%"></span></span><span class="num" style="text-align:right;">' + fmt(byCat[c]) + '</span></div>').join('') : '';
+
+    save();
+  }
+
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  $('expForm').addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    const amt = parseFloat($('eAmt').value);
+    if (!($('eDesc').value.trim()) || isNaN(amt)) return;
+    expenses.push({ id: Date.now() + '' + Math.floor(Math.random()*1000), date: $('eDate').value, desc: $('eDesc').value.trim(), cat: $('eCat').value, amt: amt });
+    $('eDesc').value = ''; $('eAmt').value = '';
+    render();
+  });
+
+  body.addEventListener('click', function(ev) {
+    const btn = ev.target.closest('.del-x');
+    if (!btn) return;
+    expenses = expenses.filter(e => e.id !== btn.dataset.id);
+    render();
+  });
+
+  $('clearBtn').addEventListener('click', function() {
+    if (expenses.length && confirm('Delete all logged expenses? This cannot be undone.')) { expenses = []; render(); }
+  });
+
+  $('exportBtn').addEventListener('click', function() {
+    if (!expenses.length) { alert('No expenses to export yet.'); return; }
+    const rows = [['Date','Description','Category','Amount (USD)']].concat(
+      expenses.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||'')).map(e => [e.date, e.desc, e.cat, e.amt]));
+    const csv = rows.map(r => r.map(f => '"' + String(f).replace(/"/g,'""') + '"').join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'morocco-honeymoon-expenses.csv';
+    a.click();
+  });
+
+  render();
+})();
+</script>
+<script src="checklist.js"></script>
+</body>
+</html>

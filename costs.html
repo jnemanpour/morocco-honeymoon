@@ -93,6 +93,16 @@
     <div class="fld add-wrap"><label>&nbsp;</label><button type="submit" class="add-btn">+ Add</button></div>
   </form>
 
+  <div class="presets">
+    <span class="presets-label">Quick add (tap to fill, then adjust &amp; press +):</span>
+    <button type="button" class="preset-chip" data-desc="CMN → Marrakech transfer" data-cat="Transport" data-amt="135">CMN→Marrakech ~$135</button>
+    <button type="button" class="preset-chip" data-desc="3-Day Sahara desert tour (2 people)" data-cat="Desert Tour" data-amt="650">Sahara tour ~$650</button>
+    <button type="button" class="preset-chip" data-desc="Fes → Chefchaouen transfer" data-cat="Transport" data-amt="115">Fes→Chefchaouen ~$115</button>
+    <button type="button" class="preset-chip" data-desc="Chefchaouen → Casablanca transfer" data-cat="Transport" data-amt="165">Chaouen→Casa ~$165</button>
+    <button type="button" class="preset-chip" data-desc="Flights LAX⇄Casablanca (out of pocket)" data-cat="Flights" data-amt="114">Flights $114</button>
+    <button type="button" class="preset-chip" data-desc="Riad deposit" data-cat="Lodging" data-amt="">Riad deposit</button>
+  </div>
+
   <div class="tracker-summary">
     <div class="ts-card"><div class="ts-num" id="sumTotal">$0</div><div class="ts-lbl">Total Spent</div></div>
     <div class="ts-card"><div class="ts-num" id="sumCount">0</div><div class="ts-lbl">Expenses Logged</div></div>
@@ -256,6 +266,16 @@
     a.href = URL.createObjectURL(blob);
     a.download = 'morocco-honeymoon-expenses.csv';
     a.click();
+  });
+
+  // Quick-add preset chips fill the form (user can tweak then submit)
+  document.querySelectorAll('.preset-chip').forEach(function(ch){
+    ch.addEventListener('click', function(){
+      $('eDesc').value = ch.dataset.desc || '';
+      if (ch.dataset.cat) $('eCat').value = ch.dataset.cat;
+      $('eAmt').value = ch.dataset.amt || '';
+      $('eAmt').focus();
+    });
   });
 
   render();

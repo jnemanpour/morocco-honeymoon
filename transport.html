@@ -50,6 +50,13 @@
   <div class="tip"><strong>Honeymoon take:</strong> after a redeye and with luggage, <strong>private transfers</strong> are worth it for the door-to-door ease — but the Casablanca↔Marrakech <strong>train</strong> is genuinely pleasant and cheap if you'd rather save. Prices are approximate (≈10 MAD = $1); book trains/buses a few days ahead in peak season.</p>
 </div>
 
+<div class="section">
+  <h2>Our Route</h2>
+  <p class="section-subtitle">Five stops, one clean loop — tap a marker</p>
+  <div class="stay-map" id="route-map"></div>
+  <div class="map-legend"><span><span class="dot" style="background:#C4654A;"></span> Our stops, in order</span><span><span class="dot" style="background:#C49A3C;"></span> Travel legs</span></div>
+</div>
+
 <!-- LEG 1 -->
 <div class="section" id="leg1">
   <h2>① Casablanca Airport → Marrakech</h2>
@@ -159,6 +166,33 @@
 </div>
 
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  if(!window.L) return;
+  const el=document.getElementById('route-map'); if(!el) return;
+  const stops=[
+    ["Casablanca Airport (arrive)",33.3675,-7.5899,"S"],
+    ["Marrakech",31.6295,-7.9811,"1"],
+    ["Sahara / Merzouga",31.0801,-4.0083,"2"],
+    ["Fes",34.0181,-5.0078,"3"],
+    ["Chefchaouen",35.1688,-5.2636,"4"],
+    ["Casablanca (depart)",33.5731,-7.5898,"5"]
+  ];
+  const line=[[33.3675,-7.5899],[31.6295,-7.9811],[31.0472,-7.1299],[31.0801,-4.0083],[34.0181,-5.0078],[35.1688,-5.2636],[33.5731,-7.5898]];
+  const map=L.map(el,{scrollWheelZoom:false}).setView([33,-6.2],6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{attribution:'&copy; OSM &copy; CARTO',maxZoom:16}).addTo(map);
+  L.polyline(line,{color:'#C49A3C',weight:3,opacity:0.75,dashArray:'8,8',lineCap:'round'}).addTo(map);
+  const ms=[];
+  stops.forEach(function(s){
+    const icon=L.divIcon({className:'',html:'<div class="map-marker hotel">'+s[3]+'</div>',iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-16]});
+    const m=L.marker([s[1],s[2]],{icon:icon}).addTo(map);
+    m.bindPopup('<div class="stay-popup"><h4>'+s[0]+'</h4></div>'); ms.push(m);
+  });
+  try{ map.fitBounds(new L.featureGroup(ms).getBounds().pad(0.15)); }catch(e){}
+})();
+</script>
 <script src="checklist.js"></script>
 </body>
 </html>

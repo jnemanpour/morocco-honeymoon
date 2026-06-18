@@ -439,6 +439,12 @@ a { color: var(--terracotta); }
 .stay-popup .sp-tag { font-size:0.78em; color:#C4654A; font-weight:600; }
 .stay-popup .sp-tag.sight { color:#1A6B5A; }
 
+/* Expense quick-add presets */
+.presets { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:14px; }
+.presets-label { font-size:0.82em; color:var(--text-light); font-style:italic; margin-right:2px; }
+.preset-chip { font-family:'Lora',serif; font-size:0.82em; padding:7px 14px; border-radius:18px; border:1px solid rgba(196,154,60,0.4); background:var(--gold-pale); color:var(--text-medium); cursor:pointer; transition:all 0.18s ease; }
+.preset-chip:hover { background:var(--gold); color:white; border-color:var(--gold); transform:translateY(-1px); }
+
 /* ════════════════ RESPONSIVE ════════════════ */
 @media (max-width: 600px) {
   .hero h1 { font-size: 2.2em; }

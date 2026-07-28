@@ -6,7 +6,7 @@
   const KEY = 'morocco_checklist_v1';
   const items = [
     { k: 'b1', html: '<strong>1. Chefchaouen (Sep 1–3)</strong> — tiny mountain guesthouses, real sell-out risk. Book first. <a href="accommodations.html#chefchaouen">→</a>' },
-    { k: 'b2', html: '<strong>2. Marrakech (Aug 24–27)</strong> — ✓ Booked: IZZA Marrakech (Superior King, 3 nights). <a href="accommodations.html#marrakech">→</a>' },
+    { k: 'b2', html: '<strong>2. Marrakech (Aug 24–27)</strong> — re-book needed (IZZA cancelled); see riad options. <a href="accommodations.html#marrakech">→</a>' },
     { k: 'b3', html: '<strong>3. 3-Day Sahara Tour</strong> — covers Days 4–6 + Dades & desert-camp nights. <a href="activities.html#desert">→</a>' },
     { k: 'b4', html: '<strong>4. Fes (Aug 29–Sep 1)</strong> — ✓ Booked: Riad Fes — Relais &amp; Châteaux (3 nights). <a href="accommodations.html#fes">→</a>' },
     { k: 'b5', html: '<strong>5. Casablanca airport hotel (Sep 3)</strong> — confirm a 24/7 shuttle for the 4am flight. <a href="accommodations.html#casablanca">→</a>' },

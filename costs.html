@@ -38,6 +38,72 @@
   .tool-btn:hover { background: var(--gold-pale); }
   .empty-note { text-align: center; color: var(--text-light); font-style: italic; padding: 22px; }
   @media (max-width: 720px) { .tracker-form { grid-template-columns: 1fr 1fr; } .tracker-form .add-wrap { grid-column: 1 / -1; } .add-btn { width: 100%; } }
+
+  /* ══ Cost chart ══
+     Palette validated with the dataviz validator against this page's surface
+     (#FFFCF7): booked #008A66 vs to-book #B8860B — passes lightness band,
+     chroma floor, CVD separation (ΔE 9.3), normal-vision floor (19.1) and
+     3:1 contrast. Every bar is also direct-labelled, so identity is never
+     carried by colour alone. */
+  .viz { --c-booked:#008A66; --c-tobook:#B8860B; --c-range:rgba(184,134,11,0.18); }
+
+  .split-bar { display:flex; height:34px; border-radius:6px; overflow:hidden; margin:6px 0 10px; background:var(--sand); }
+  .split-seg { display:flex; align-items:center; justify-content:center; font-size:0.82em; font-weight:600; color:#fff; white-space:nowrap; overflow:hidden; min-width:0; padding:0 6px; }
+  .split-seg.committed { background:var(--c-booked); border-right:2px solid var(--warm-white); }
+  .split-seg.remaining { background:var(--c-tobook); }
+  .split-key { display:flex; gap:22px; flex-wrap:wrap; font-size:0.85em; color:var(--text-medium); margin-bottom:4px; }
+  .split-key span.k { display:inline-flex; align-items:center; gap:7px; }
+  .swatch { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+  .swatch.booked { background:var(--c-booked); }
+  .swatch.tobook { background:var(--c-tobook); }
+  .swatch.range  { background:var(--c-range); border:1px solid rgba(184,134,11,0.45); }
+
+  /* Label/value gutters are shared by the rows, the gridlines and the axis via
+     these two vars, so the three can never drift out of alignment. */
+  .chart { margin-top:6px; position:relative; --lab:204px; --val:68px; --gap:12px; }
+  .cbar-row { display:grid; grid-template-columns:var(--lab) 1fr var(--val); align-items:center; gap:var(--gap); padding:4px 0; position:relative; }
+  .cbar-row:hover .cbar-fill { filter:brightness(1.08); }
+  .cbar-label { font-size:0.86em; color:var(--text-medium); text-align:right; line-height:1.25; }
+  .cbar-label .tick { color:var(--c-booked); font-weight:700; }
+  .cbar-track { position:relative; height:18px; }
+  .cbar-range { position:absolute; top:4px; height:10px; background:var(--c-range); border-radius:5px; }
+  .cbar-fill { position:absolute; left:0; top:0; height:18px; border-radius:0 4px 4px 0; }
+  .cbar-fill.booked { background:var(--c-booked); }
+  .cbar-fill.tobook { background:var(--c-tobook); }
+  .cbar-val { font-size:0.86em; text-align:right; color:var(--text-dark); font-variant-numeric:tabular-nums; font-weight:600; }
+  .chart-grid { position:absolute; left:calc(var(--lab) + var(--gap)); right:calc(var(--val) + var(--gap)); top:0; bottom:20px; pointer-events:none; }
+  .chart-grid i { position:absolute; top:0; bottom:0; width:1px; background:rgba(196,154,60,0.22); }
+  .chart-axis { position:relative; height:18px; margin-top:4px;
+                margin-left:calc(var(--lab) + var(--gap)); margin-right:calc(var(--val) + var(--gap)); }
+  .chart-axis i { position:absolute; top:0; transform:translateX(-50%); font-size:0.74em; color:var(--text-light); font-variant-numeric:tabular-nums; }
+  .cbar-row[data-tip]:hover::after {
+    content:attr(data-tip); position:absolute; left:200px; bottom:100%; z-index:5;
+    background:var(--midnight); color:#fff; font-size:0.78em; line-height:1.45;
+    padding:7px 11px; border-radius:8px; white-space:pre-line; max-width:290px;
+    box-shadow:0 4px 16px rgba(28,16,20,0.28); pointer-events:none;
+  }
+
+  .todo-item { display:grid; grid-template-columns:1fr auto; gap:10px 16px; align-items:start;
+    padding:14px 16px; margin:9px 0; border-radius:12px; background:var(--warm-white);
+    border:1px solid rgba(196,154,60,0.18); border-left:4px solid var(--c-tobook); }
+  .todo-item.urgent { border-left-color:var(--terracotta); background:linear-gradient(135deg,#FDF5F3,var(--warm-white)); }
+  .todo-item.onTrip { border-left-color:var(--sand-dark); }
+  .todo-name { font-family:'Playfair Display',serif; font-weight:600; color:var(--text-dark); font-size:1.02em; }
+  .todo-note { font-size:0.86em; color:var(--text-light); margin-top:3px; }
+  .todo-cost { font-variant-numeric:tabular-nums; font-weight:600; color:var(--text-dark); white-space:nowrap; }
+  .todo-cost .rng { display:block; font-size:0.76em; color:var(--text-light); font-weight:400; }
+  .todo-tag { display:inline-block; font-size:0.72em; letter-spacing:0.4px; text-transform:uppercase;
+    padding:2px 9px; border-radius:10px; margin-left:8px; vertical-align:1px; }
+  .todo-tag.next { background:rgba(196,101,74,0.14); color:var(--terracotta); font-weight:600; }
+  .todo-tag.trip { background:var(--sand); color:var(--text-light); }
+
+  @media (max-width:640px) {
+    .chart { --lab:112px; --val:58px; --gap:8px; }
+    .split-seg { font-size:0.72em; }
+    .split-key { gap:12px; font-size:0.8em; }
+    .cbar-label { font-size:0.78em; }
+    .cbar-row[data-tip]:hover::after { left:0; max-width:220px; }
+  }
 </style>
 </head>
 <body>
@@ -76,56 +142,99 @@
   </div>
 </div>
 
-<!-- LIVE TRACKER -->
-<div class="section">
-  <h2>💸 Live Expense Tracker</h2>
-  <p class="section-subtitle">Add expenses as we go — totals update instantly and save in this browser</p>
+<!-- COST OVERVIEW + CHART -->
+<div class="section viz">
+  <h2>What This Trip Costs</h2>
+  <p class="section-subtitle">Cash for the two of us &middot; 10 nights &middot; USD &middot; flights &amp; Marrakech largely covered by points</p>
 
-  <form class="tracker-form" id="expForm" autocomplete="off">
-    <div class="fld"><label for="eDate">Date</label><input type="date" id="eDate" required></div>
-    <div class="fld"><label for="eDesc">What for?</label><input type="text" id="eDesc" placeholder="e.g. Chefchaouen deposit" required></div>
-    <div class="fld"><label for="eCat">Category</label>
-      <select id="eCat">
-        <option>Flights</option><option selected>Lodging</option><option>Desert Tour</option><option>Transport</option><option>Activities</option><option>Food & Drink</option><option>Shopping</option><option>Insurance</option><option>Other</option>
-      </select>
+  <div class="tracker-summary" style="margin-top:4px;">
+    <div class="ts-card"><div class="ts-num">~$4,886</div><div class="ts-lbl">Projected total</div></div>
+    <div class="ts-card"><div class="ts-num" style="color:#008A66;">$1,564</div><div class="ts-lbl">Paid so far</div></div>
+    <div class="ts-card"><div class="ts-num" style="color:var(--terracotta);">$472</div><div class="ts-lbl">Booked, due at property</div></div>
+    <div class="ts-card"><div class="ts-num" style="color:#B8860B;">$2,850</div><div class="ts-lbl">Still to book</div></div>
+  </div>
+
+  <h3>Committed vs. still to book</h3>
+  <div class="split-key">
+    <span class="k"><span class="swatch booked"></span> Committed &mdash; $2,036 (42%)</span>
+    <span class="k"><span class="swatch tobook"></span> Still to book &mdash; $2,850 (58%)</span>
+  </div>
+  <div class="split-bar" role="img" aria-label="Of a projected $4,886 total, $2,036 is committed and $2,850 is still to book.">
+    <div class="split-seg committed" style="width:41.7%;">$2,036 committed</div>
+    <div class="split-seg remaining" style="width:58.3%;">$2,850 to book</div>
+  </div>
+  <p style="font-size:0.85em;color:var(--text-light);margin-top:2px;">Of the $2,036 committed, <strong>$1,564 is already paid</strong> and <strong>$472 is due at the properties</strong> ($31.70 at La Mamounia, ~&euro;400 at Lina Ryad).</p>
+
+  <h3>Where the money goes</h3>
+  <div class="split-key">
+    <span class="k"><span class="swatch booked"></span> Booked &mdash; price is fixed</span>
+    <span class="k"><span class="swatch tobook"></span> Estimate &mdash; still to book</span>
+    <span class="k"><span class="swatch range"></span> Lean-to-splurge range</span>
+  </div>
+
+  <div class="chart">
+    <div class="chart-grid"><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="left:100%"></i></div>
+
+    <div class="cbar-row" data-tip="Riad Fes — Relais & Châteaux&#10;3 nights, prepaid in full. Fixed.">
+      <span class="cbar-label"><span class="tick">✓</span> Fes &mdash; Riad Fes</span>
+      <span class="cbar-track"><span class="cbar-fill booked" style="width:93.3%"></span></span>
+      <span class="cbar-val">$1,120</span>
     </div>
-    <div class="fld"><label for="eAmt">Amount (USD)</label><input type="number" id="eAmt" placeholder="0.00" step="0.01" min="0" required></div>
-    <div class="fld add-wrap"><label>&nbsp;</label><button type="submit" class="add-btn">+ Add</button></div>
-  </form>
+    <div class="cbar-row" data-tip="Balloon, hammam, cooking classes, pottery, guides.&#10;Lean $350 · Likely $780 · Splurge $1,100">
+      <span class="cbar-label">Activities</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:29.2%;width:62.5%"></span><span class="cbar-fill tobook" style="width:65.0%"></span></span>
+      <span class="cbar-val">$780</span>
+    </div>
+    <div class="cbar-row" data-tip="3-day private tour, Marrakech → Fes.&#10;Includes Dades + desert-camp nights.&#10;Lean $300 · Likely $650 · Splurge $800">
+      <span class="cbar-label">Sahara tour</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:25.0%;width:41.7%"></span><span class="cbar-fill tobook" style="width:54.2%"></span></span>
+      <span class="cbar-val">$650</span>
+    </div>
+    <div class="cbar-row" data-tip="~10 days for two.&#10;Lean $400 · Likely $600 · Splurge $900">
+      <span class="cbar-label">Food &amp; drink</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:33.3%;width:41.7%"></span><span class="cbar-fill tobook" style="width:50.0%"></span></span>
+      <span class="cbar-val">$600</span>
+    </div>
+    <div class="cbar-row" data-tip="Lina Ryad & Spa, Chefchaouen&#10;2 nights, €400 — due at the property. Fixed.">
+      <span class="cbar-label"><span class="tick">✓</span> Chefchaouen &mdash; Lina Ryad</span>
+      <span class="cbar-track"><span class="cbar-fill booked" style="width:36.7%"></span></span>
+      <span class="cbar-val">$440</span>
+    </div>
+    <div class="cbar-row" data-tip="CMN→Marrakech, Fes→Chefchaouen, Chefchaouen→Casablanca.&#10;Lean $60 (bus/train) · Likely $390 · Splurge $500 (private car)">
+      <span class="cbar-label">City transfers</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:5.0%;width:36.7%"></span><span class="cbar-fill tobook" style="width:32.5%"></span></span>
+      <span class="cbar-val">$390</span>
+    </div>
+    <div class="cbar-row" data-tip="La Mamounia, Marrakech&#10;3 nights. $1,953 total, less $1,591.63 in Amex points. Fixed.">
+      <span class="cbar-label"><span class="tick">✓</span> Marrakech &mdash; La Mamounia</span>
+      <span class="cbar-track"><span class="cbar-fill booked" style="width:30.2%"></span></span>
+      <span class="cbar-val">$362</span>
+    </div>
+    <div class="cbar-row" data-tip="Guides, drivers, museum entries, SIM card, souvenirs.&#10;Lean $100 · Likely $190 · Splurge $300">
+      <span class="cbar-label">Tips &amp; misc.</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:8.3%;width:16.7%"></span><span class="cbar-fill tobook" style="width:15.8%"></span></span>
+      <span class="cbar-val">$190</span>
+    </div>
+    <div class="cbar-row" data-tip="1 night near CMN for the 4:00 am flight.&#10;Lean $70 · Likely $120 · Splurge $130">
+      <span class="cbar-label">Casablanca hotel</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:5.8%;width:5.0%"></span><span class="cbar-fill tobook" style="width:10.0%"></span></span>
+      <span class="cbar-val">$120</span>
+    </div>
+    <div class="cbar-row" data-tip="Medical + trip cancellation.&#10;Lean $90 · Likely $120 · Splurge $150">
+      <span class="cbar-label">Travel insurance</span>
+      <span class="cbar-track"><span class="cbar-range" style="left:7.5%;width:5.0%"></span><span class="cbar-fill tobook" style="width:10.0%"></span></span>
+      <span class="cbar-val">$120</span>
+    </div>
+    <div class="cbar-row" data-tip="LAX ⇄ Casablanca nonstop, both of us.&#10;158,706 Chase points + $114 cash. Fixed.">
+      <span class="cbar-label"><span class="tick">✓</span> Flights</span>
+      <span class="cbar-track"><span class="cbar-fill booked" style="width:9.5%"></span></span>
+      <span class="cbar-val">$114</span>
+    </div>
 
-  <div class="presets">
-    <span class="presets-label">Quick add (tap to fill, then adjust &amp; press +):</span>
-    <button type="button" class="preset-chip" data-desc="CMN → Marrakech transfer" data-cat="Transport" data-amt="135">CMN→Marrakech ~$135</button>
-    <button type="button" class="preset-chip" data-desc="3-Day Sahara desert tour (2 people)" data-cat="Desert Tour" data-amt="650">Sahara tour ~$650</button>
-    <button type="button" class="preset-chip" data-desc="Fes → Chefchaouen transfer" data-cat="Transport" data-amt="115">Fes→Chefchaouen ~$115</button>
-    <button type="button" class="preset-chip" data-desc="Chefchaouen → Casablanca transfer" data-cat="Transport" data-amt="165">Chaouen→Casa ~$165</button>
-    <button type="button" class="preset-chip" data-desc="Flights LAX⇄Casablanca (out of pocket)" data-cat="Flights" data-amt="114">Flights $114</button>
-    <button type="button" class="preset-chip" data-desc="La Mamounia, Marrakech (after Amex points)" data-cat="Lodging" data-amt="361.54">La Mamounia $362</button>
-    <button type="button" class="preset-chip" data-desc="Riad Fes, Relais &amp; Châteaux (prepaid)" data-cat="Lodging" data-amt="1120">Riad Fes $1,120</button>
-    <button type="button" class="preset-chip" data-desc="Lina Ryad &amp; Spa, Chefchaouen (€400 at property)" data-cat="Lodging" data-amt="440">Lina Ryad $440</button>
-    <button type="button" class="preset-chip" data-desc="Casablanca airport hotel (1 night)" data-cat="Lodging" data-amt="">Casablanca hotel</button>
+    <div class="chart-axis"><i style="left:0">$0</i><i style="left:25%">$300</i><i style="left:50%">$600</i><i style="left:75%">$900</i><i style="left:100%">$1,200</i></div>
   </div>
 
-  <div class="tracker-summary">
-    <div class="ts-card"><div class="ts-num" id="sumTotal">$0</div><div class="ts-lbl">Total Spent</div></div>
-    <div class="ts-card"><div class="ts-num" id="sumCount">0</div><div class="ts-lbl">Expenses Logged</div></div>
-    <div class="ts-card"><div class="ts-num" id="sumPerPerson">$0</div><div class="ts-lbl">Per Person</div></div>
-    <div class="ts-card"><div class="ts-num" id="sumVsBudget">—</div><div class="ts-lbl">vs. Likely Budget ($4,650)</div></div>
-  </div>
-
-  <div class="cat-breakdown" id="catBreakdown"></div>
-
-  <table class="exp-table" id="expTable">
-    <thead><tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount</th><th></th></tr></thead>
-    <tbody id="expBody"></tbody>
-  </table>
-  <div class="empty-note" id="emptyNote">No expenses yet — add the first one above. (Tip: log Riad deposits as you book them!)</div>
-
-  <div class="tracker-tools">
-    <button class="tool-btn" id="exportBtn">⬇ Export CSV</button>
-    <button class="tool-btn" id="clearBtn">🗑 Clear all</button>
-    <span style="font-size:0.8em;color:var(--text-light);align-self:center;">Saved automatically in this browser (localStorage).</span>
-  </div>
+  <div class="tip" style="margin-top:20px;"><strong>Bottom line:</strong> the honeymoon lands near <strong>$4,900</strong> at a comfortable pace &mdash; roughly <strong>$3,400 lean</strong> to <strong>$5,900 splurge</strong>. Lodging is the biggest block and it's almost entirely settled; the swing is in activities, the desert tour and how we travel between cities.</div>
 </div>
 
 <!-- WHAT'S BOOKED -->
@@ -165,28 +274,106 @@
   <div class="tip"><strong>Paid vs. still owed:</strong> <strong>$1,564 is already paid</strong> (flights $114 + La Mamounia $329.84 + Riad Fes ~$1,120). Another <strong>~$472 is committed but unpaid</strong> — $31.70 at La Mamounia check-out and ~$440 at Lina Ryad on arrival. Budget cash for both.</div>
 </div>
 
-<!-- BUDGET ESTIMATE -->
+<!-- STILL TO BOOK -->
+<div class="section" id="tobook">
+  <h2>Still to Book</h2>
+  <p class="section-subtitle">Seven things left &middot; about <strong>$2,850</strong> of the budget</p>
+
+  <div class="todo-item urgent">
+    <div><span class="todo-name">Casablanca airport hotel</span><span class="todo-tag next">Book next</span>
+      <div class="todo-note">Thu Sep 3, 1 night &mdash; the only stop still unbooked. Must have a 24/7 shuttle for our 4:00 am flight. <a href="accommodations.html#casablanca">See the three options &rarr;</a></div></div>
+    <div class="todo-cost">$120<span class="rng">$70&ndash;$130</span></div>
+  </div>
+
+  <div class="todo-item urgent">
+    <div><span class="todo-name">3-Day Sahara desert tour</span><span class="todo-tag next">Book next</span>
+      <div class="todo-note">Covers Aug 27&ndash;29 plus the Dades and desert-camp nights, driver and camel trek. Private tours sell out for late August. <a href="activities.html#desert">Desert tour options &rarr;</a></div></div>
+    <div class="todo-cost">$650<span class="rng">$300&ndash;$800</span></div>
+  </div>
+
+  <div class="todo-item">
+    <div><span class="todo-name">Experiences &amp; activities</span>
+      <div class="todo-note">Hot air balloon, couples hammam, two cooking classes, pottery workshop, guided medina tours. <a href="activities.html">Activities &rarr;</a></div></div>
+    <div class="todo-cost">$780<span class="rng">$350&ndash;$1,100</span></div>
+  </div>
+
+  <div class="todo-item">
+    <div><span class="todo-name">City-to-city transfers</span>
+      <div class="todo-note">CMN&rarr;Marrakech (Aug 24), Fes&rarr;Chefchaouen (Sep 1), Chefchaouen&rarr;Casablanca (Sep 3). <a href="transport.html">Compare train, bus &amp; private car &rarr;</a></div></div>
+    <div class="todo-cost">$390<span class="rng">$60&ndash;$500</span></div>
+  </div>
+
+  <div class="todo-item">
+    <div><span class="todo-name">Travel insurance</span>
+      <div class="todo-note">Medical + trip cancellation. Worth buying before the Riad Fes cancellation window closes ~Aug 8.</div></div>
+    <div class="todo-cost">$120<span class="rng">$90&ndash;$150</span></div>
+  </div>
+
+  <div class="todo-item onTrip">
+    <div><span class="todo-name">Food &amp; drink</span><span class="todo-tag trip">Pay as we go</span>
+      <div class="todo-note">Roughly 10 days for two &mdash; street food, riad dinners, restaurants. Nothing to book.</div></div>
+    <div class="todo-cost">$600<span class="rng">$400&ndash;$900</span></div>
+  </div>
+
+  <div class="todo-item onTrip">
+    <div><span class="todo-name">Tips, entry fees, SIM &amp; misc.</span><span class="todo-tag trip">Pay as we go</span>
+      <div class="todo-note">Guides and drivers, museum entries, a local SIM at the airport, souvenirs.</div></div>
+    <div class="todo-cost">$190<span class="rng">$100&ndash;$300</span></div>
+  </div>
+
+  <div class="tip"><strong>Two deadlines:</strong> Riad Fes is free to cancel until <strong>~Aug 8</strong>; Lina Ryad until <strong>Fri Aug 29</strong>. After those dates both stays are locked in for real.</div>
+</div>
+
+<!-- LIVE TRACKER -->
 <div class="section">
-  <h2>Planning Budget</h2>
-  <p class="section-subtitle">Cash for the two of us · 10 nights · USD · ✓ rows are booked and fixed</p>
-  <table class="cost-table">
-    <thead><tr><th>Category</th><th class="num">Lean</th><th class="num">Likely</th><th class="num">Splurge</th></tr></thead>
-    <tbody>
-      <tr><td class="cat">✓ Flights <span class="sub">(out of pocket, rest on Chase points)</span></td><td class="num">$114</td><td class="num">$114</td><td class="num">$114</td></tr>
-      <tr><td class="cat">✓ Lodging — Marrakech, La Mamounia (3 nights) <span class="sub">(after 159,163 Amex points)</span></td><td class="num">$362</td><td class="num">$362</td><td class="num">$362</td></tr>
-      <tr><td class="cat">✓ Lodging — Fes, Riad Fes (3 nights) <span class="sub">(prepaid in full)</span></td><td class="num">$1,120</td><td class="num">$1,120</td><td class="num">$1,120</td></tr>
-      <tr><td class="cat">✓ Lodging — Chefchaouen, Lina Ryad &amp; Spa (2 nights) <span class="sub">(&euro;400, due at the property)</span></td><td class="num">$440</td><td class="num">$440</td><td class="num">$440</td></tr>
-      <tr><td class="cat">Lodging — Casablanca (1 night)</td><td class="num">$70</td><td class="num">$120</td><td class="num">$130</td></tr>
-      <tr><td class="cat">3-Day Sahara Tour <span class="sub">(incl. Dades + desert-camp nights, driver, camel trek)</span></td><td class="num">$300</td><td class="num">$650</td><td class="num">$800</td></tr>
-      <tr><td class="cat">City-to-city transfers <span class="sub">(CMN→Marrakech, Fes→Chaouen, Chaouen→Casa)</span></td><td class="num">$60</td><td class="num">$390</td><td class="num">$500</td></tr>
-      <tr><td class="cat">Activities <span class="sub">(balloon, hammam, cooking, pottery, guides)</span></td><td class="num">$350</td><td class="num">$780</td><td class="num">$1,100</td></tr>
-      <tr><td class="cat">Food & drink <span class="sub">(~10 days, 2 people)</span></td><td class="num">$400</td><td class="num">$600</td><td class="num">$900</td></tr>
-      <tr><td class="cat">Travel insurance</td><td class="num">$90</td><td class="num">$120</td><td class="num">$150</td></tr>
-      <tr><td class="cat">Tips, entry fees, SIM, misc.</td><td class="num">$100</td><td class="num">$190</td><td class="num">$300</td></tr>
-      <tr class="total-row"><td>Estimated Total (for two)</td><td class="num">~$3,406</td><td class="num">~$4,886</td><td class="num">~$5,916</td></tr>
-    </tbody>
+  <h2>💸 Live Expense Tracker</h2>
+  <p class="section-subtitle">Add expenses as we go — totals update instantly and save in this browser</p>
+
+  <form class="tracker-form" id="expForm" autocomplete="off">
+    <div class="fld"><label for="eDate">Date</label><input type="date" id="eDate" required></div>
+    <div class="fld"><label for="eDesc">What for?</label><input type="text" id="eDesc" placeholder="e.g. Chefchaouen deposit" required></div>
+    <div class="fld"><label for="eCat">Category</label>
+      <select id="eCat">
+        <option>Flights</option><option selected>Lodging</option><option>Desert Tour</option><option>Transport</option><option>Activities</option><option>Food & Drink</option><option>Shopping</option><option>Insurance</option><option>Other</option>
+      </select>
+    </div>
+    <div class="fld"><label for="eAmt">Amount (USD)</label><input type="number" id="eAmt" placeholder="0.00" step="0.01" min="0" required></div>
+    <div class="fld add-wrap"><label>&nbsp;</label><button type="submit" class="add-btn">+ Add</button></div>
+  </form>
+
+  <div class="presets">
+    <span class="presets-label">Quick add (tap to fill, then adjust &amp; press +):</span>
+    <button type="button" class="preset-chip" data-desc="CMN → Marrakech transfer" data-cat="Transport" data-amt="135">CMN→Marrakech ~$135</button>
+    <button type="button" class="preset-chip" data-desc="3-Day Sahara desert tour (2 people)" data-cat="Desert Tour" data-amt="650">Sahara tour ~$650</button>
+    <button type="button" class="preset-chip" data-desc="Fes → Chefchaouen transfer" data-cat="Transport" data-amt="115">Fes→Chefchaouen ~$115</button>
+    <button type="button" class="preset-chip" data-desc="Chefchaouen → Casablanca transfer" data-cat="Transport" data-amt="165">Chaouen→Casa ~$165</button>
+    <button type="button" class="preset-chip" data-desc="Flights LAX⇄Casablanca (out of pocket)" data-cat="Flights" data-amt="114">Flights $114</button>
+    <button type="button" class="preset-chip" data-desc="La Mamounia, Marrakech (after Amex points)" data-cat="Lodging" data-amt="361.54">La Mamounia $362</button>
+    <button type="button" class="preset-chip" data-desc="Riad Fes, Relais &amp; Châteaux (prepaid)" data-cat="Lodging" data-amt="1120">Riad Fes $1,120</button>
+    <button type="button" class="preset-chip" data-desc="Lina Ryad &amp; Spa, Chefchaouen (€400 at property)" data-cat="Lodging" data-amt="440">Lina Ryad $440</button>
+    <button type="button" class="preset-chip" data-desc="Casablanca airport hotel (1 night)" data-cat="Lodging" data-amt="">Casablanca hotel</button>
+  </div>
+
+  <div class="tracker-summary">
+    <div class="ts-card"><div class="ts-num" id="sumTotal">$0</div><div class="ts-lbl">Total Spent</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumCount">0</div><div class="ts-lbl">Expenses Logged</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumPerPerson">$0</div><div class="ts-lbl">Per Person</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumVsBudget">—</div><div class="ts-lbl">vs. Projected Total ($4,886)</div></div>
+  </div>
+
+  <div class="cat-breakdown" id="catBreakdown"></div>
+
+  <table class="exp-table" id="expTable">
+    <thead><tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount</th><th></th></tr></thead>
+    <tbody id="expBody"></tbody>
   </table>
-  <div class="tip"><strong>Where we stand:</strong> <strong>~$2,036 is committed</strong> (flights + three hotels) — $1,564 paid, ~$472 due at properties. That leaves roughly <strong>$1,370–$3,880</strong> still to spend, landing the whole honeymoon near <strong>$4,900</strong> at a comfortable pace. Only the Casablanca airport hotel is still unbooked.</div>
+  <div class="empty-note" id="emptyNote">No expenses yet — add the first one above. (Tip: log Riad deposits as you book them!)</div>
+
+  <div class="tracker-tools">
+    <button class="tool-btn" id="exportBtn">⬇ Export CSV</button>
+    <button class="tool-btn" id="clearBtn">🗑 Clear all</button>
+    <span style="font-size:0.8em;color:var(--text-light);align-self:center;">Saved automatically in this browser (localStorage).</span>
+  </div>
 </div>
 
 <div class="section">

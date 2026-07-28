@@ -83,7 +83,7 @@
 
   <form class="tracker-form" id="expForm" autocomplete="off">
     <div class="fld"><label for="eDate">Date</label><input type="date" id="eDate" required></div>
-    <div class="fld"><label for="eDesc">What for?</label><input type="text" id="eDesc" placeholder="e.g. Riad Yasmine deposit" required></div>
+    <div class="fld"><label for="eDesc">What for?</label><input type="text" id="eDesc" placeholder="e.g. Chefchaouen deposit" required></div>
     <div class="fld"><label for="eCat">Category</label>
       <select id="eCat">
         <option>Flights</option><option selected>Lodging</option><option>Desert Tour</option><option>Transport</option><option>Activities</option><option>Food & Drink</option><option>Shopping</option><option>Insurance</option><option>Other</option>
@@ -100,14 +100,16 @@
     <button type="button" class="preset-chip" data-desc="Fes → Chefchaouen transfer" data-cat="Transport" data-amt="115">Fes→Chefchaouen ~$115</button>
     <button type="button" class="preset-chip" data-desc="Chefchaouen → Casablanca transfer" data-cat="Transport" data-amt="165">Chaouen→Casa ~$165</button>
     <button type="button" class="preset-chip" data-desc="Flights LAX⇄Casablanca (out of pocket)" data-cat="Flights" data-amt="114">Flights $114</button>
-    <button type="button" class="preset-chip" data-desc="Riad deposit" data-cat="Lodging" data-amt="">Riad deposit</button>
+    <button type="button" class="preset-chip" data-desc="La Mamounia, Marrakech (after Amex points)" data-cat="Lodging" data-amt="361.54">La Mamounia $362</button>
+    <button type="button" class="preset-chip" data-desc="Riad Fes, Relais &amp; Châteaux (prepaid)" data-cat="Lodging" data-amt="1120">Riad Fes $1,120</button>
+    <button type="button" class="preset-chip" data-desc="Chefchaouen guesthouse (2 nights)" data-cat="Lodging" data-amt="">Chefchaouen stay</button>
   </div>
 
   <div class="tracker-summary">
     <div class="ts-card"><div class="ts-num" id="sumTotal">$0</div><div class="ts-lbl">Total Spent</div></div>
     <div class="ts-card"><div class="ts-num" id="sumCount">0</div><div class="ts-lbl">Expenses Logged</div></div>
     <div class="ts-card"><div class="ts-num" id="sumPerPerson">$0</div><div class="ts-lbl">Per Person</div></div>
-    <div class="ts-card"><div class="ts-num" id="sumVsBudget">—</div><div class="ts-lbl">vs. Likely Budget ($4,100)</div></div>
+    <div class="ts-card"><div class="ts-num" id="sumVsBudget">—</div><div class="ts-lbl">vs. Likely Budget ($4,650)</div></div>
   </div>
 
   <div class="cat-breakdown" id="catBreakdown"></div>
@@ -135,18 +137,34 @@
       <span>LAX ⇄ Casablanca nonstop · Aug 23 – Sep 4, 2026 (cash value was ~$1,701)</span>
     </div>
   </div>
-  <div class="tip"><strong>Huge win:</strong> covering the flights almost entirely with points means our whole budget below is essentially everything <em>except</em> airfare. 🎉</div>
+  <div class="booking-card" style="border:2px solid var(--teal);">
+    <div class="card-header"><span class="card-title">🏨 Marrakech — La Mamounia (3 nights, Aug 24–27)</span><span class="card-price" style="background:linear-gradient(135deg,#1A6B5A,#155244);">$361.54 out of pocket</span></div>
+    <div class="card-details">
+      <span>Paid with <strong>159,163 Amex Membership Rewards points + $329.84</strong> to the card · Trip ref. ZO-AX1070-76125</span>
+      <span>$1,953.17 total value · points covered $1,591.63 · $31.70 mandatory tax still due at the property</span>
+      <span>Booked through Amex Fine Hotels + Resorts on Jul 28, 2026 <em>(replaces the cancelled IZZA Marrakech booking)</em></span>
+    </div>
+  </div>
+  <div class="booking-card" style="border:2px solid var(--teal);">
+    <div class="card-header"><span class="card-title">🏨 Fes — Riad Fes, Relais &amp; Châteaux (3 nights, Aug 29–Sep 1)</span><span class="card-price" style="background:linear-gradient(135deg,#1A6B5A,#155244);">~$1,120 prepaid</span></div>
+    <div class="card-details">
+      <span>MAD 11,188.60 prepaid in full including tax · booked under Rina Schiller</span>
+      <span>&ldquo;3 nights for the price of 2&rdquo; rate · free cancellation until ~Aug 8, 2026</span>
+    </div>
+  </div>
+  <div class="tip"><strong>Huge win:</strong> flights are almost entirely on Chase points and Marrakech is almost entirely on Amex points — between them we've covered about <strong>$3,654 of value for $476 in cash</strong>. 🎉</div>
 </div>
 
 <!-- BUDGET ESTIMATE -->
 <div class="section">
   <h2>Planning Budget</h2>
-  <p class="section-subtitle">Estimates for the two of us · 10 nights · USD · excludes flights (covered by points)</p>
+  <p class="section-subtitle">Cash for the two of us · 10 nights · USD · ✓ rows are booked and fixed</p>
   <table class="cost-table">
     <thead><tr><th>Category</th><th class="num">Lean</th><th class="num">Likely</th><th class="num">Splurge</th></tr></thead>
     <tbody>
-      <tr><td class="cat">Lodging — Marrakech (3 nights)</td><td class="num">$240</td><td class="num">$450</td><td class="num">$855</td></tr>
-      <tr><td class="cat">Lodging — Fes (3 nights)</td><td class="num">$330</td><td class="num">$600</td><td class="num">$900</td></tr>
+      <tr><td class="cat">✓ Flights <span class="sub">(out of pocket, rest on Chase points)</span></td><td class="num">$114</td><td class="num">$114</td><td class="num">$114</td></tr>
+      <tr><td class="cat">✓ Lodging — Marrakech, La Mamounia (3 nights) <span class="sub">(after 159,163 Amex points)</span></td><td class="num">$362</td><td class="num">$362</td><td class="num">$362</td></tr>
+      <tr><td class="cat">✓ Lodging — Fes, Riad Fes (3 nights) <span class="sub">(prepaid in full)</span></td><td class="num">$1,120</td><td class="num">$1,120</td><td class="num">$1,120</td></tr>
       <tr><td class="cat">Lodging — Chefchaouen (2 nights)</td><td class="num">$110</td><td class="num">$200</td><td class="num">$450</td></tr>
       <tr><td class="cat">Lodging — Casablanca (1 night)</td><td class="num">$70</td><td class="num">$120</td><td class="num">$130</td></tr>
       <tr><td class="cat">3-Day Sahara Tour <span class="sub">(incl. Dades + desert-camp nights, driver, camel trek)</span></td><td class="num">$300</td><td class="num">$650</td><td class="num">$800</td></tr>
@@ -155,11 +173,10 @@
       <tr><td class="cat">Food & drink <span class="sub">(~10 days, 2 people)</span></td><td class="num">$400</td><td class="num">$600</td><td class="num">$900</td></tr>
       <tr><td class="cat">Travel insurance</td><td class="num">$90</td><td class="num">$120</td><td class="num">$150</td></tr>
       <tr><td class="cat">Tips, entry fees, SIM, misc.</td><td class="num">$100</td><td class="num">$190</td><td class="num">$300</td></tr>
-      <tr><td class="cat">Flights (out of pocket)</td><td class="num">$114</td><td class="num">$114</td><td class="num">$114</td></tr>
-      <tr class="total-row"><td>Estimated Total (for two)</td><td class="num">~$2,164</td><td class="num">~$4,214</td><td class="num">~$6,199</td></tr>
+      <tr class="total-row"><td>Estimated Total (for two)</td><td class="num">~$3,076</td><td class="num">~$4,646</td><td class="num">~$5,926</td></tr>
     </tbody>
   </table>
-  <div class="tip"><strong>Bottom line:</strong> with flights on points, a comfortable-but-not-extravagant honeymoon runs roughly <strong>$4,000–4,500 for both of us</strong> on the ground. Lean it out toward ~$2,200, or splurge on luxury riads & a private driver toward ~$6,200.</div>
+  <div class="tip"><strong>Where we stand:</strong> <strong>$1,596 is already committed</strong> (flights + both hotels), of which $1,564 is paid and $32 is due at La Mamounia on check-out. That leaves roughly <strong>$1,480–$4,330</strong> still to spend, landing the whole honeymoon around <strong>$4,600</strong> at a comfortable pace.</div>
 </div>
 
 <div class="section">
@@ -183,7 +200,7 @@
 <script>
 (function() {
   const KEY = 'morocco_honeymoon_expenses_v1';
-  const BUDGET = 4100; // likely on-the-ground + flights baseline for the "vs budget" gauge
+  const BUDGET = 4646; // likely-column total from the planning budget below
   const fmt = n => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
   const catColors = {}; // not needed; single gradient
   let expenses = [];

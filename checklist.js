@@ -7,7 +7,7 @@
   const items = [
     { k: 'b1', html: '<strong>1. Chefchaouen (Sep 1–3)</strong> — ✓ Booked: Lina Ryad &amp; Spa (Junior Suite, 2 nights). <em>Unpaid — €400 due at the property.</em> <a href="accommodations.html#chefchaouen">→</a>' },
     { k: 'b2', html: '<strong>2. Marrakech (Aug 24–27)</strong> — ✓ Booked: La Mamounia (3 nights, Amex FHR). <a href="accommodations.html#marrakech">→</a>' },
-    { k: 'b3', html: '<strong>3. 3-Day Sahara Tour</strong> — covers Days 4–6 + Dades & desert-camp nights. <a href="activities.html#desert">→</a>' },
+    { k: 'b3', html: '<strong>3. 3-Day Sahara Tour (private)</strong> — pick an operator; insist on an A/C tent + named stays. <a href="sahara.html#operators">→</a>' },
     { k: 'b4', html: '<strong>4. Fes (Aug 29–Sep 1)</strong> — ✓ Booked: Riad Fes — Relais &amp; Châteaux (3 nights). <a href="accommodations.html#fes">→</a>' },
     { k: 'b5', html: '<strong>5. Casablanca airport hotel (Sep 3)</strong> — confirm a 24/7 shuttle for the 4am flight. <a href="accommodations.html#casablanca">→</a>' },
     { k: 'b6', html: '<strong>6. CMN → Marrakech transfer</strong> (Aug 24) — train, flight, or private car. <a href="activities.html">→</a>' },

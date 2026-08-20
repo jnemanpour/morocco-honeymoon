@@ -7,7 +7,7 @@
   const items = [
     { k: 'b10', html: '<strong>1. Sunset camel trek at Merzouga</strong> — not included at Riad Madu; ask the riad to arrange it for Aug 28. <a href="accommodations.html#sahara">→</a>' },
     { k: 'b13', html: '<strong>2. Settle the driver\'s terms</strong> — 11 days or 12? Does MAD 1,700/day cover fuel, tolls and his room &amp; meals for 11 nights? Ask about staged payments. <a href="transport.html#cost">→</a>' },
-    { k: 'b14', html: '<strong>3. Plan the dirham cash</strong> — MAD 18,700 for the driver is well past one ATM run. Sort the cards and withdrawals before we fly. <a href="costs.html">→</a>' },
+    { k: 'b14', html: '<strong>3. Get $3,500 in crisp $100 bills</strong> — order from the bank early. Hotels (~$1,372) go on a no-FX-fee credit card, not cash. <a href="costs.html#cash">→</a>' },
     { k: 'b2', html: '<strong>4. Marrakech (Aug 24–27)</strong> — ✓ Booked: La Mamounia (3 nights, Amex FHR). <a href="accommodations.html#marrakech">→</a>' },
     { k: 'b3', html: '<strong>5. Driver, whole trip (Aug 24–Sep 4)</strong> — ✓ Arranged: private car &amp; driver, airport to airport, MAD 1,700/day (~MAD 18,700). <a href="transport.html">→</a>' },
     { k: 'b11', html: '<strong>6. Dades (Aug 27–28)</strong> — ✓ Booked: Eden Boutique Hotel &amp; Spa. <em>Unpaid — ~$496 due at the property.</em> <a href="accommodations.html#sahara">→</a>' },

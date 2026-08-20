@@ -5,14 +5,17 @@
 (function () {
   const KEY = 'morocco_checklist_v1';
   const items = [
-    { k: 'b1', html: '<strong>1. Chefchaouen (Sep 1–3)</strong> — ✓ Booked: Lina Ryad &amp; Spa (Junior Suite, 2 nights). <em>Unpaid — €400 due at the property.</em> <a href="accommodations.html#chefchaouen">→</a>' },
-    { k: 'b2', html: '<strong>2. Marrakech (Aug 24–27)</strong> — ✓ Booked: La Mamounia (3 nights, Amex FHR). <a href="accommodations.html#marrakech">→</a>' },
-    { k: 'b3', html: '<strong>3. 3-Day Sahara Tour (private)</strong> — pick an operator; insist on an A/C tent + named stays. <a href="sahara.html#operators">→</a>' },
-    { k: 'b4', html: '<strong>4. Fes (Aug 29–Sep 1)</strong> — ✓ Booked: Riad Fes — Relais &amp; Châteaux (3 nights). <a href="accommodations.html#fes">→</a>' },
-    { k: 'b5', html: '<strong>5. Casablanca airport hotel (Sep 3)</strong> — confirm a 24/7 shuttle for the 4am flight. <a href="accommodations.html#casablanca">→</a>' },
-    { k: 'b6', html: '<strong>6. CMN → Marrakech transfer</strong> (Aug 24) — train, flight, or private car. <a href="activities.html">→</a>' },
-    { k: 'b7', html: '<strong>7. Experiences</strong> — balloon, hammam, cooking classes, pottery. <a href="activities.html">→</a>' },
-    { k: 'b8', html: '<strong>8. Travel insurance</strong> — World Nomads or SafetyWing. <a href="activities.html">→</a>' }
+    { k: 'b9', html: '<strong>1. ⚠️ Fix the Casablanca dates</strong> — Barceló Anfa is booked Aug 28–29; we need <strong>Sep 3–4</strong>. Change it or rebook. <a href="accommodations.html#casablanca">→</a>' },
+    { k: 'b3', html: '<strong>2. Sahara driving (Aug 27–29)</strong> — both desert hotels are booked, so we only need a private driver (or car) Marrakech → Dades → Merzouga → Fes. <a href="sahara.html#operators">→</a>' },
+    { k: 'b10', html: '<strong>3. Sunset camel trek at Merzouga</strong> — not included at Riad Madu; ask the riad to arrange it for Aug 28. <a href="accommodations.html#sahara">→</a>' },
+    { k: 'b2', html: '<strong>4. Marrakech (Aug 24–27)</strong> — ✓ Booked: La Mamounia (3 nights, Amex FHR). <a href="accommodations.html#marrakech">→</a>' },
+    { k: 'b11', html: '<strong>5. Dades (Aug 27–28)</strong> — ✓ Booked: Eden Boutique Hotel &amp; Spa. <em>Unpaid — ~$496 due at the property.</em> <a href="accommodations.html#sahara">→</a>' },
+    { k: 'b12', html: '<strong>6. Merzouga (Aug 28–29)</strong> — ✓ Booked: Riad Madu (Suite). <em>Unpaid — €165 due at the property.</em> <a href="accommodations.html#sahara">→</a>' },
+    { k: 'b4', html: '<strong>7. Fes (Aug 29–Sep 1)</strong> — ✓ Booked: Riad Fes — Relais &amp; Châteaux (3 nights). <a href="accommodations.html#fes">→</a>' },
+    { k: 'b1', html: '<strong>8. Chefchaouen (Sep 1–3)</strong> — ✓ Booked: Lina Ryad &amp; Spa (Junior Suite, 2 nights). <em>Unpaid — €400 due at the property.</em> <a href="accommodations.html#chefchaouen">→</a>' },
+    { k: 'b6', html: '<strong>9. CMN → Marrakech transfer</strong> (Aug 24) — train, flight, or private car. <a href="transport.html">→</a>' },
+    { k: 'b7', html: '<strong>10. Experiences</strong> — balloon, hammam, cooking classes, pottery. <a href="activities.html">→</a>' },
+    { k: 'b8', html: '<strong>11. Travel insurance</strong> — World Nomads or SafetyWing. <a href="activities.html">→</a>' }
   ];
 
   const mounts = Array.prototype.slice.call(document.querySelectorAll('.booking-checklist-mount'));

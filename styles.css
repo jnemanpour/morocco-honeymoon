@@ -289,6 +289,10 @@ a { color: var(--terracotta); }
 .tip.jewish::before { background: linear-gradient(180deg, #5B86C4, var(--deep-blue)); }
 .tip.jewish strong { color: var(--deep-blue); }
 
+.tip.alert { background: linear-gradient(135deg, #FCEEE9, #FDF6F3); border-color: rgba(196,101,74,0.28); color: var(--text-dark); }
+.tip.alert::before { background: linear-gradient(180deg, var(--rose), var(--terracotta)); width: 6px; }
+.tip.alert strong { color: #A8442B; }
+
 /* ════════════════ LABELS ════════════════ */
 .night-label { display: inline-block; background: linear-gradient(135deg, var(--terracotta), var(--rose)); color: white; font-family: 'Lora', serif; font-size: 0.58em; font-style: normal; padding: 3px 12px; border-radius: 12px; margin-left: 10px; vertical-align: middle; letter-spacing: 0.5px; box-shadow: 0 2px 6px rgba(196,101,74,0.2); }
 .pick-label { display: inline-block; background: linear-gradient(135deg, var(--rose), var(--terracotta)); color: white; font-family: 'Lora', serif; font-size: 0.7em; padding: 2px 10px; border-radius: 10px; margin-left: 8px; vertical-align: middle; letter-spacing: 0.3px; }

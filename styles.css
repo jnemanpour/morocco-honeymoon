@@ -115,7 +115,9 @@ a { color: var(--terracotta); }
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  /* Cities is the last nav item, so anchor the popover to its right edge —
+     left-aligning pushes it past the viewport on narrower desktop windows. */
+  right: 0;
   min-width: 210px;
   background: #241318;
   border: 1px solid rgba(228,200,122,0.25);
@@ -147,13 +149,74 @@ a { color: var(--terracotta); }
   font-family: 'Playfair Display', serif;
 }
 
-@media (max-width: 760px) {
-  .nav-inner { flex-direction: column; align-items: stretch; padding: 10px 16px; }
-  .nav-logo { justify-content: center; margin-bottom: 6px; }
-  .nav-links { justify-content: center; }
-  .nav-links a { padding: 8px 10px; font-size: 0.85em; }
-  .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(228,200,122,0.06); margin: 4px 0; }
-  .dropdown > a::after { content: ' ▾'; }
+/* Hamburger toggle — hidden on desktop, drives the mobile panel below.
+   The checkbox stays focusable (offscreen, not display:none) so the menu is
+   reachable by keyboard; the focus ring is drawn on the burger label. */
+.nav-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.nav-burger { display: none; }
+
+/* Full nav row needs ~770px; switch to the burger just above that so the
+   links never wrap into a second row. */
+@media (max-width: 800px) {
+  .nav-inner { padding: 0 16px; min-height: 56px; flex-wrap: wrap; }
+
+  .nav-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    margin-right: -8px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .nav-burger span {
+    display: block;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-toggle:focus-visible + .nav-burger { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+  /* Burger morphs into an X while the panel is open. */
+  .nav-toggle:checked + .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle:checked + .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked + .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Collapsed by default; opening it drops a full-width panel under the bar. */
+  .nav-links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 6px 0 12px;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+    border-top: 1px solid rgba(228,200,122,0.18);
+  }
+  .nav-toggle:checked ~ .nav-links { display: flex; }
+  .nav-links a { padding: 12px 14px; font-size: 0.95em; }
+
+  /* Cities becomes an inline sub-list inside the panel instead of a popover. */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid rgba(228,200,122,0.25);
+    border-radius: 0;
+    background: transparent;
+    min-width: 0;
+    margin: 2px 0 6px 16px;
+    padding: 0 0 0 8px;
+  }
+  .dropdown > a { pointer-events: none; opacity: 0.75; font-size: 0.8em; letter-spacing: 1px; text-transform: uppercase; padding-bottom: 4px; }
+  .dropdown > a::after { content: none; }
 }
 
 /* ════════════════ HERO ════════════════ */
